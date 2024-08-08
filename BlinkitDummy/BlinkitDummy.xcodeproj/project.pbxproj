@@ -18,6 +18,7 @@
 		B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */; };
 		B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916DB2C64DD5700E5A5FF /* customButton.swift */; };
 		B79916DE2C64ED8A00E5A5FF /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916DD2C64ED8A00E5A5FF /* MockData.swift */; };
+		B79916E02C6548BF00E5A5FF /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916DF2C6548BF00E5A5FF /* DummyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTag.swift; sourceTree = "<group>"; };
 		B79916DB2C64DD5700E5A5FF /* customButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButton.swift; sourceTree = "<group>"; };
 		B79916DD2C64ED8A00E5A5FF /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		B79916DF2C6548BF00E5A5FF /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */,
 				B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */,
 				B79916DB2C64DD5700E5A5FF /* customButton.swift */,
+				B79916DF2C6548BF00E5A5FF /* DummyView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */,
 				B79916D22C63E74800E5A5FF /* SubProductView.swift in Sources */,
 				B79916DE2C64ED8A00E5A5FF /* MockData.swift in Sources */,
+				B79916E02C6548BF00E5A5FF /* DummyView.swift in Sources */,
 				B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */,
 				B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */,
 				B79916C12C63CE5C00E5A5FF /* ContentView.swift in Sources */,

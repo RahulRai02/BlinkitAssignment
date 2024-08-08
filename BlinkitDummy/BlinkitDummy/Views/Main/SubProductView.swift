@@ -11,38 +11,42 @@ struct SubProductView: View {
     let columns = [
         GridItem(.flexible(), spacing: 0),
         GridItem(.flexible(), spacing: 0)
-        ]
+    ]
     @State private var selectedCategory: Category? = mockCategories.first
+    
+    // Pull Down offset
+    
 
-        
+    //    @State private var startingOffsetY: CGFloat = 0
+    //    @State private var currentDragOffsetY: CGFloat = 0
+    //    @State private var pullDownThreshold: CGFloat = -150
+//    let startingOffsetY: CGFloat
+    
     var body: some View {
         VStack {
             NavigationBar()
                 .frame(height: UIScreen.main.bounds.height * 0.05)
-            GeometryReader{ geometry in
-                HStack(spacing:0){
-                    ScrollViewReader { scrollViewProxy in
-                        ScrollView{
-                            VStack(spacing:0){
-                                ForEach(mockCategories, id: \.id) { category in
-                                   CategoriesView(category: category, 
-                                                  isSelected: category == selectedCategory )
-                                        .onTapGesture {
-                                            withAnimation(.easeInOut) {
-                                                selectedCategory = category
-                                                scrollViewProxy.scrollTo(category.id,
-                                                                         anchor: .center)
-                                            }
-                                        }
+            HStack(spacing:0){
+                ScrollViewReader { scrollViewProxy in
+                    ScrollView{
+                        VStack(spacing:0){
+                            ForEach(mockCategories, id: \.id) { category in
+                                CategoriesView(category: category,
+                                               isSelected: category == selectedCategory )
+                                .onTapGesture {
+                                    withAnimation(.easeInOut) {
+                                        selectedCategory = category
+                                        //                                                selectedCategoryId = category.id
+                                        scrollViewProxy.scrollTo(category.id,
+                                                                 anchor: .center)
+                                    }
                                 }
                             }
-
                         }
-                        .scrollBounceBehavior(.basedOnSize)
-                        .frame(width: geometry.size.width * 0.15)
                     }
-                    
-                    
+                }
+                .frame(width: UIScreen.main.bounds.width * 0.15)
+                GeometryReader { geoProxy in
                     ScrollView {
                         LazyVGrid(columns: columns, spacing:0) {
                             if let selectedCategory = selectedCategory{
@@ -51,17 +55,13 @@ struct SubProductView: View {
                                 }
                             }
                         }
-                        
                     }
-                    .offset(x:5)
-                    .frame(width: geometry.size.width * 0.85)
-                    
                 }
+                .offset(x:5)
+                .frame(width: UIScreen.main.bounds.width * 0.85)
                 
             }
         }
-
-
     }
 }
 
