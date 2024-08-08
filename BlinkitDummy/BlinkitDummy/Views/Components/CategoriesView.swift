@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct CategoriesView: View {
-    let category: Category
+    let category: Category    
     let isSelected: Bool
+
     
     var body: some View {
 
@@ -25,9 +26,10 @@ struct CategoriesView: View {
                 .lineLimit(3)
                 .frame(maxWidth: 70)
                 .padding(.bottom,5)
+                .padding(.horizontal, 5)
         }
         .frame(width: 70, height: 90)
-        .background(Color.gray.opacity(0.1))
+        .background(isSelected ? Color.green.opacity(0.2) :Color.gray.opacity(0.1))
         .cornerRadius(5)
         
 //        .background(Color.gray)
