@@ -16,6 +16,8 @@
 		B79916D62C63F02F00E5A5FF /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916D52C63F02F00E5A5FF /* NavigationBar.swift */; };
 		B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */; };
 		B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */; };
+		B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916DB2C64DD5700E5A5FF /* customButton.swift */; };
+		B79916DE2C64ED8A00E5A5FF /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916DD2C64ED8A00E5A5FF /* MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		B79916D52C63F02F00E5A5FF /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemView.swift; sourceTree = "<group>"; };
 		B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemTag.swift; sourceTree = "<group>"; };
+		B79916DB2C64DD5700E5A5FF /* customButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButton.swift; sourceTree = "<group>"; };
+		B79916DD2C64ED8A00E5A5FF /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		B79916CE2C63E56400E5A5FF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B79916DD2C64ED8A00E5A5FF /* MockData.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 				B79916D52C63F02F00E5A5FF /* NavigationBar.swift */,
 				B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */,
 				B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */,
+				B79916DB2C64DD5700E5A5FF /* customButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -196,6 +202,8 @@
 				B79916D42C63E7E300E5A5FF /* CategoriesView.swift in Sources */,
 				B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */,
 				B79916D22C63E74800E5A5FF /* SubProductView.swift in Sources */,
+				B79916DE2C64ED8A00E5A5FF /* MockData.swift in Sources */,
+				B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */,
 				B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */,
 				B79916C12C63CE5C00E5A5FF /* ContentView.swift in Sources */,
 				B79916BF2C63CE5C00E5A5FF /* BlinkitDummyApp.swift in Sources */,

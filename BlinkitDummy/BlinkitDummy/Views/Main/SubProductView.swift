@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct SubProductView: View {
+    let columns = [
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 0)
+        ]
+    @State private var selectedCategory: Category? = mockCategories.first
+//    @State private var selectedCategory: Category
+//    let mockCategories: [Category] = mockCategories
+        
     var body: some View {
-        
-        
         VStack {
             NavigationBar()
                 .frame(height: UIScreen.main.bounds.height * 0.05)
@@ -18,21 +24,29 @@ struct SubProductView: View {
                 HStack(spacing:0){
                     ScrollView{
                         VStack(spacing:0){
-                            CategoriesView()
-                            CategoriesView()
-                            CategoriesView()
-                            CategoriesView()
-                            CategoriesView()
-                            CategoriesView()
+                            ForEach(mockCategories) { category in
+                                CategoriesView(category: category, isSelected: selectedCategory == category)
+                                    .onTapGesture {
+                                        selectedCategory = category
+                                        print(selectedCategory?.products ?? Text("No products"))
+                                    }
+                            }
                         }
 
                     }
                     .frame(width: geometry.size.width * 0.15)
                     
+                    
                     ScrollView {
+                        LazyVGrid(columns: columns, spacing:0) {
+                            if let selectedCategory = selectedCategory{
+                                ForEach(selectedCategory.products){ product in
+                                    CategoryItemView(product: product)
+                                }
+                            }
+                        }
                         
                     }
-                    .background(Color.green)
                     .frame(width: geometry.size.width * 0.85)
                     
                 }

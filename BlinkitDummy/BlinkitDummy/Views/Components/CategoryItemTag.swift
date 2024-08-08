@@ -14,12 +14,13 @@ struct CategoryItemTag: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 12, weight: .regular))
+            .font(.system(size: 8, weight: .light))
             .foregroundColor(textColor)
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(backgroundColor)
             .cornerRadius(8)
+            
     }
 }
 
