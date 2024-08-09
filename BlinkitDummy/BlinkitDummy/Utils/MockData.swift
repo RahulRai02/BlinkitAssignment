@@ -40,19 +40,14 @@ let mockCategories: [Category] = [
     Category(id: UUID(), name: "Asian Sauces", image: "asianSauceRealThaiCurry", products: [
         Product(id: UUID(), name: "Veeba Wok Tok Red Chilli Sauce", image: "asianSauceVeebaWokTok", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "140", title: "Veeba Wok Tok"),
         Product(id: UUID(), name: "Tops Premium Synthetic Vinegar", image: "asianSauceTopsVinegar", weight: "500ml", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "60", title: "Tops Premium Vinegar"),
-        Product(id: UUID(), name: "Real Thai Red Curry Paste", image: "asianSauceRealThaiCurry", weight: "200g", tag: "Curry paste", deliveryTime: Int.random(in: 10...15), mrp: "180", title: "Real Thai Red Curry"),
-        Product(id: UUID(), name: "Veeba Wok Tok Red Chilli Sauce", image: "asianSauceVeebaWokTok", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "140", title: "Veeba Wok Tok"),
-        Product(id: UUID(), name: "Veeba Wok Tok Red Chilli Sauce", image: "asianSauceVeebaWokTok", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "140", title: "Veeba Wok Tok"),
-        Product(id: UUID(), name: "Tops Premium Synthetic Vinegar", image: "asianSauceTopsVinegar", weight: "500ml", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "60", title: "Tops Premium Vinegar"),
-        Product(id: UUID(), name: "Real Thai Red Curry Paste", image: "asianSauceRealThaiCurry", weight: "200g", tag: "Curry paste", deliveryTime: Int.random(in: 10...15), mrp: "180", title: "Real Thai Red Curry"),
-        Product(id: UUID(), name: "Veeba Wok Tok Red Chilli Sauce", image: "asianSauceVeebaWokTok", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "140", title: "Veeba Wok Tok")
+        Product(id: UUID(), name: "Real Thai Red Curry Paste", image: "asianSauceRealThaiCurry", weight: "200g", tag: "Curry paste", deliveryTime: Int.random(in: 10...15), mrp: "180", title: "Real Thai Red Curry")
     ]),
     Category(id: UUID(), name: "Mayonnaise", image: "mayoOethkar", products: [
         Product(id: UUID(), name: "Hellmann's Real Mayonnaise", image: "mayoHellman", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "120", title: "Hellmann's Real"),
         Product(id: UUID(), name: "Kraft Classic Mayonnaise", image: "mayoVeeba", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "110", title: "Kraft Classic"),
         Product(id: UUID(), name: "Eggless Mayonnaise", image: "mayoOethkar", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "130", title: "Eggless Mayonnaise"),
         Product(id: UUID(), name: "Organic Mayonnaise", image: "mayoVeeba", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "150", title: "Organic Mayonnaise"),
-        Product(id: UUID(), name: "Hellmann's Real Mayonnaise", image: "mayoHellman", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "120", title: "Hellmann's Real"),
+  
         Product(id: UUID(), name: "Kraft Classic Mayonnaise", image: "mayoVeeba", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "110", title: "Kraft Classic"),
         Product(id: UUID(), name: "Eggless Mayonnaise", image: "mayoOethkar", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "130", title: "Eggless Mayonnaise"),
         Product(id: UUID(), name: "Hellmann's Real Mayonnaise", image: "mayoHellman", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "120", title: "Hellmann's Real"),
