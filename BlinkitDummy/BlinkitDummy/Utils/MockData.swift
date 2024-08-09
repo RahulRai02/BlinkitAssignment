@@ -35,6 +35,8 @@ let mockCategories: [Category] = [
         Product(id: UUID(), name: "Maggi Tomato Ketchup", image: "maggiKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "110", title: "Maggi Tomato"),
         Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"),
         Product(id: UUID(), name: "Habenoro Hot Chilli Sauce", image: "habenaroKetchup", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "130", title: "Habenoro Hot Chilli"),
+        Product(id: UUID(), name: "Kissan Fresh Tomato Ketchup", image: "kissanKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "95", title: "Kissan Fresh"),
+        Product(id: UUID(), name: "Kissan Fresh Tomato Ketchup", image: "kissanKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "95", title: "Kissan Fresh"),
         Product(id: UUID(), name: "Kissan Fresh Tomato Ketchup", image: "kissanKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "95", title: "Kissan Fresh")
     ]),
     Category(id: UUID(), name: "Asian Sauces", image: "asianSauceRealThaiCurry", products: [
