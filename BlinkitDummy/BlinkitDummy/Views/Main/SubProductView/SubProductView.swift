@@ -14,19 +14,8 @@ struct SubProductView: View {
     ]
     
     @StateObject var viewModel = SubProductViewModel()
-    
-//    @State private var selectedCategory: Category? = mockCategories.first
-    private let pullDownThreshold: CGFloat = -80
-    private let pullUpThreshold: CGFloat = 180
+    @StateObject private var scrollViewModel = ScrollViewModel()
 
-//    @State private var previousCategoryIndex: Int? = 0
-//    @State private var nextCategoryIndex: Int? = 1
-
-
-    @State var offset: CGPoint = .zero
-    @State var contentHeight: CGFloat = 0
-    @State var visibleContentHeight: CGFloat = 0
-    
     var body: some View {
         VStack {
             NavigationBar()
@@ -35,9 +24,9 @@ struct SubProductView: View {
             HStack(spacing:0){
                     ScrollView{
                         VStack(spacing:0){
-                            Text("Offset: \(String(format: "%.1f", offset.y))")
-                            Text("Height: \(String(format: "%.1f", contentHeight))")
-                            Text("VisCont: \(String(format: "%.1f", visibleContentHeight))")
+//                            Text("Offset: \(String(format: "%.1f", scrollViewModel.offset.y))")
+//                            Text("Height: \(String(format: "%.1f", scrollViewModel.contentHeight))")
+//                            Text("VisCont: \(String(format: "%.1f", scrollViewModel.visibleContentHeight))")
                             ForEach(viewModel.categories, id: \.id) { category in
                                 // Display category fetched in the scrollView
                                 // isSelected for detecting which category item is selected
@@ -50,7 +39,6 @@ struct SubProductView: View {
                                 }
                                 .onAppear{
                                     viewModel.selectedCategory = viewModel.categories.first
-                                    
                                 }
                             }
                         }
@@ -58,11 +46,14 @@ struct SubProductView: View {
                     .onAppear{
                         viewModel.fetchCategoriesAndProducts()
                     }
-
                 .frame(width: UIScreen.main.bounds.width * 0.15)
                 
                 ScrollViewReader{ scrollProxy in
-                    CustomScrollView(offset: $offset,contentHeight: $contentHeight, visibleContentHeight: $visibleContentHeight, showIndicators: true, axis: .vertical) {
+                    CustomScrollView(offset: $scrollViewModel.offset,
+                                     contentHeight: $scrollViewModel.contentHeight,
+                                     visibleContentHeight: $scrollViewModel.visibleContentHeight,
+                                     showIndicators: true,
+                                     axis: .vertical) {
                         withAnimation(.easeInOut(duration: 2)) {
                             LazyVGrid(columns: columns, spacing:0) {
                                 if let selectedCategory = viewModel.selectedCategory{
@@ -75,7 +66,7 @@ struct SubProductView: View {
                             }
                             .onChange(of: viewModel.selectedCategory) { oldValue, newValue in
                                 if let firstProduct = viewModel.selectedCategory?.products.first {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                                         withAnimation(.easeInOut(duration: 0.4)) {
                                             scrollProxy.scrollTo(firstProduct.id, anchor: .top)
                                         }
@@ -84,45 +75,38 @@ struct SubProductView: View {
                             }
                         }
                     }
-                    .onChange(of: offset.y, { oldValue, newValue in
-                     
-                        if newValue < pullDownThreshold {
-                            // Handle pull down
-                            print("Pull down detected")
-                            handleDragPullDown()
-                            
-                        } else if ((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight < 0) {
-                            // Handle pull up
-                            print("\(((visibleContentHeight - contentHeight) + offset.y))")
-                            print("Pull up detected")
-                            
-                            handleDragPullUp()
-                            
-                        }else if(((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight > 0)){
-                            if newValue < pullDownThreshold{
-                                print("Pull down detected")
-                               
-                                handleDragPullDown()
-                            }else if(newValue > 140){
-                                print("Pull up detected")
-                               
-                                handleDragPullUp()
-                            }
-                        }
-            
-                        if (offset.y == 0){
-//                            Update indices if offset is 0 after interaction
+//                    .safeAreaInset(edge: .top) {
+//                        CircularPercentageView(progress: scrollViewModel.pullDownProgress)
+//                    }
+                    
+                    .onChange(of: scrollViewModel.offset.y, { oldValue, newValue in
+                        scrollViewModel.handleScroll()
+                        if (scrollViewModel.offset.y == 0){
+                            // Update indices if offset is 0 after interaction
                                 print("Updating indices")
-                                updateIndices()  
-                            
+                                updateIndices()
                             }
                     })
-                
-                    
+                    .overlay(
+                        CircularPercentageView(progress: scrollViewModel.pullDownProgress)
+//                            .scaleEffect(scrollViewModel.pullDownProgress / 100)
+                            .opacity(scrollViewModel.pullDownProgress > 0 ? 1 : 0)
+                            .offset(y: max(-10, scrollViewModel.offset.y/3))
+                        , alignment: .top
+                    )
+//                    .overlay(
+//                        CircularPercentageView(progress: scrollViewModel.pullUpProgress)
+//                        , alignment: .bottom
+//                    )
+
                 }
                 .offset(x: 5)
                 .frame(width: UIScreen.main.bounds.width * 0.85)
             }
+        }
+        .onAppear{
+            scrollViewModel.onPullDown = handleDragPullDown
+            scrollViewModel.onPullUp = handleDragPullUp
         }
     }
     func handleDragPullDown(){
