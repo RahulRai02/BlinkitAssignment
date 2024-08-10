@@ -16,12 +16,12 @@ struct NavigationBar: View {
                     dismiss()
                 }label:{
                     HStack(spacing:5){
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 18).weight(.medium))
-                            .foregroundColor(.secondary)
+                        Image(systemName: "arrow.backward")
+                            .font(.system(size: 18).weight(.bold))
+                            .foregroundColor(Color.black)
                         Text("Sauces & Spreads")
-                            .font(.title3)
-                            .foregroundStyle(.primary)
+                            .font(.system(size:18).weight(.bold))
+                            .foregroundColor(Color.black)
                     }
                     .frame(height: 44)
                 }
@@ -29,6 +29,8 @@ struct NavigationBar: View {
                 Image(systemName: "magnifyingglass")
                     .font(.system(size: 18))
                     .frame(width: 44, height: 44, alignment: .trailing)
+                    .foregroundColor(Color.black)
+                
                 
             }
             .frame(height: 52)

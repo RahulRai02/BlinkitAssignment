@@ -10,7 +10,7 @@ import SwiftUI
 struct CategoriesView: View {
     let category: Category    
     let isSelected: Bool
-
+//    @Binding var selectedCategoryId: UUID?
     
     var body: some View {
 
@@ -30,19 +30,20 @@ struct CategoriesView: View {
         }
         .frame(width: 70, height: 90)
         .background(isSelected ? Color.green.opacity(0.2) :Color.gray.opacity(0.1))
-        .cornerRadius(5)
+        .cornerRadius(2)
         
 //        .background(Color.gray)
     }
+
 }
 
 
-#Preview {
-    CategoriesView(category:     Category(id: UUID(), name: "Tomato Ketchup", image: "ketchup", products: [
-        Product(id: UUID(), name: "Veeba Chef Special Tomato Ketchup", image: "veebaKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "100", title: "Veeba Chef Special"),
-        Product(id: UUID(), name: "Kissan Fresh Tomato Ketchup", image: "kissanKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "95", title: "Kissan Fresh"),
-        Product(id: UUID(), name: "Maggi Tomato Ketchup", image: "maggiKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "110", title: "Maggi Tomato"),
-        Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"),
-        Product(id: UUID(), name: "Habenoro Hot Chilli Sauce", image: "habenaroKetchup", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "130", title: "Habenoro Hot Chilli")
-    ]), isSelected: true)
-}
+//#Preview {
+//    CategoriesView(category:     Category(id: UUID(), name: "Tomato Ketchup", image: "ketchup", products: [
+//        Product(id: UUID(), name: "Veeba Chef Special Tomato Ketchup", image: "veebaKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "100", title: "Veeba Chef Special"),
+//        Product(id: UUID(), name: "Kissan Fresh Tomato Ketchup", image: "kissanKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "95", title: "Kissan Fresh"),
+//        Product(id: UUID(), name: "Maggi Tomato Ketchup", image: "maggiKetchup", weight: "500g", tag: "White", deliveryTime: Int.random(in: 10...15), mrp: "110", title: "Maggi Tomato"),
+//        Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"),
+//        Product(id: UUID(), name: "Habenoro Hot Chilli Sauce", image: "habenaroKetchup", weight: "250ml", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "130", title: "Habenoro Hot Chilli")
+//    ]), isSelected: true)
+//}

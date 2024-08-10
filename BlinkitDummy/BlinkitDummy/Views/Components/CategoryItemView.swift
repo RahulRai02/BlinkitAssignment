@@ -43,6 +43,8 @@ struct CategoryItemView: View {
 
                 Text(product.name)
                     .font(.system(size: 14).weight(.medium))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
 
                 Text("\(product.deliveryTime) mins")
                     .font(.system(size: 10).weight(.light))
@@ -57,7 +59,7 @@ struct CategoryItemView: View {
     }
 }
 
-
-#Preview {
-    CategoryItemView(product: Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"))
-}
+//
+//#Preview {
+//    CategoryItemView(product: Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"))
+//}

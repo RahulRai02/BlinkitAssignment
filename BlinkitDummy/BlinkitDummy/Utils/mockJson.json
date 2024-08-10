@@ -1,0 +1,305 @@
+{
+  "categories": [
+    {
+      "name": "Tomato Ketchup",
+      "image": "ketchup",
+      "products": [
+        {
+          "name": "Veeba Chef Special Tomato Ketchup",
+          "image": "veebaKetchup",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "12",
+          "mrp": "100",
+          "title": "Veeba Chef Special"
+        },
+        {
+          "name": "Kissan Fresh Tomato Ketchup",
+          "image": "kissanKetchup",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "15",
+          "mrp": "95",
+          "title": "Kissan Fresh"
+        },
+        {
+          "name": "Maggi Tomato Ketchup",
+          "image": "maggiKetchup",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "11",
+          "mrp": "110",
+          "title": "Maggi Tomato"
+        },
+        {
+          "name": "Maggi Hot and Sweet Tomato Ketchup",
+          "image": "maggiHotAndSweetKetchup",
+          "weight": "500g",
+          "tag": "Chili",
+          "deliveryTime": "16",
+          "mrp": "115",
+          "title": "Maggi Hot and Sweet"
+        },
+        {
+          "name": "Habenoro Hot Chilli Sauce",
+          "image": "habenaroKetchup",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "14",
+          "mrp": "130",
+          "title": "Habenoro Hot Chilli"
+        },
+        {
+          "name": "Kissan Fresh Tomato Ketchup",
+          "image": "kissanKetchup",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "15",
+          "mrp": "95",
+          "title": "Kissan Fresh"
+        },
+        {
+          "name": "Maggi Tomato Ketchup",
+          "image": "maggiKetchup",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "11",
+          "mrp": "110",
+          "title": "Maggi Tomato"
+        },
+        {
+          "name": "Maggi Hot and Sweet Tomato Ketchup",
+          "image": "maggiHotAndSweetKetchup",
+          "weight": "500g",
+          "tag": "Chili",
+          "deliveryTime": "16",
+          "mrp": "115",
+          "title": "Maggi Hot and Sweet"
+        },
+        {
+          "name": "Habenoro Hot Chilli Sauce",
+          "image": "habenaroKetchup",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "14",
+          "mrp": "130",
+          "title": "Habenoro Hot Chilli"
+        }
+      ]
+    },
+    {
+      "name": "Asian Sauces",
+      "image": "asianSauceRealThaiCurry",
+      "products": [
+        {
+          "name": "Veeba Wok Tok Red Chilli Sauce",
+          "image": "asianSauceVeebaWokTok",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "13",
+          "mrp": "140",
+          "title": "Veeba Wok Tok"
+        },
+        {
+          "name": "Tops Premium Synthetic Vinegar",
+          "image": "asianSauceTopsVinegar",
+          "weight": "500ml",
+          "tag": "White",
+          "deliveryTime": "17",
+          "mrp": "60",
+          "title": "Tops Premium Vinegar"
+        },
+        {
+          "name": "Real Thai Red Curry Paste",
+          "image": "asianSauceRealThaiCurry",
+          "weight": "200g",
+          "tag": "Curry paste",
+          "deliveryTime": "19",
+          "mrp": "180",
+          "title": "Real Thai Red Curry"
+        }
+      ]
+    },
+    {
+      "name": "Mayonnaise",
+      "image": "mayoOethkar",
+      "products": [
+        {
+          "name": "Hellmann's Real Mayonnaise",
+          "image": "mayoHellman",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "15",
+          "mrp": "120",
+          "title": "Hellmann's Real"
+        },
+        {
+          "name": "Kraft Classic Mayonnaise",
+          "image": "mayoVeeba",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "12",
+          "mrp": "110",
+          "title": "Kraft Classic"
+        },
+        {
+          "name": "Eggless Mayonnaise",
+          "image": "mayoOethkar",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "14",
+          "mrp": "130",
+          "title": "Eggless Mayonnaise"
+        },
+        {
+          "name": "Organic Mayonnaise",
+          "image": "mayoVeeba",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "18",
+          "mrp": "150",
+          "title": "Organic Mayonnaise"
+        },
+        {
+          "name": "Eggless Mayonnaise",
+          "image": "mayoOethkar",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "14",
+          "mrp": "130",
+          "title": "Eggless Mayonnaise"
+        },
+        {
+          "name": "Organic Mayonnaise",
+          "image": "mayoVeeba",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "18",
+          "mrp": "150",
+          "title": "Organic Mayonnaise"
+        },
+        {
+          "name": "Organic Mayonnaise",
+          "image": "mayoVeeba",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "18",
+          "mrp": "150",
+          "title": "Organic Mayonnaise"
+        },
+        {
+          "name": "Eggless Mayonnaise",
+          "image": "mayoOethkar",
+          "weight": "500g",
+          "tag": "White",
+          "deliveryTime": "14",
+          "mrp": "130",
+          "title": "Eggless Mayonnaise"
+        }
+        
+      ]
+    },
+    {
+      "name": "Asian Sauces",
+      "image": "asianSauceRealThaiCurry",
+      "products": [
+        {
+          "name": "Veeba Wok Tok Red Chilli Sauce",
+          "image": "asianSauceVeebaWokTok",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "13",
+          "mrp": "140",
+          "title": "Veeba Wok Tok"
+        },
+        {
+          "name": "Tops Premium Synthetic Vinegar",
+          "image": "asianSauceTopsVinegar",
+          "weight": "500ml",
+          "tag": "White",
+          "deliveryTime": "17",
+          "mrp": "60",
+          "title": "Tops Premium Vinegar"
+        },
+        {
+          "name": "Real Thai Red Curry Paste",
+          "image": "asianSauceRealThaiCurry",
+          "weight": "200g",
+          "tag": "Curry paste",
+          "deliveryTime": "19",
+          "mrp": "180",
+          "title": "Real Thai Red Curry"
+        },
+        {
+          "name": "Veeba Wok Tok Red Chilli Sauce",
+          "image": "asianSauceVeebaWokTok",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "13",
+          "mrp": "140",
+          "title": "Veeba Wok Tok"
+        },
+        {
+          "name": "Tops Premium Synthetic Vinegar",
+          "image": "asianSauceTopsVinegar",
+          "weight": "500ml",
+          "tag": "White",
+          "deliveryTime": "17",
+          "mrp": "60",
+          "title": "Tops Premium Vinegar"
+        },
+        {
+          "name": "Real Thai Red Curry Paste",
+          "image": "asianSauceRealThaiCurry",
+          "weight": "200g",
+          "tag": "Curry paste",
+          "deliveryTime": "19",
+          "mrp": "180",
+          "title": "Real Thai Red Curry"
+        },
+        {
+          "name": "Tops Premium Synthetic Vinegar",
+          "image": "asianSauceTopsVinegar",
+          "weight": "500ml",
+          "tag": "White",
+          "deliveryTime": "17",
+          "mrp": "60",
+          "title": "Tops Premium Vinegar"
+        }
+      ]
+    },
+    {
+      "name": "Asian Sauces",
+      "image": "asianSauceRealThaiCurry",
+      "products": [
+        {
+          "name": "Veeba Wok Tok Red Chilli Sauce",
+          "image": "asianSauceVeebaWokTok",
+          "weight": "250ml",
+          "tag": "Chili",
+          "deliveryTime": "13",
+          "mrp": "140",
+          "title": "Veeba Wok Tok"
+        },
+        {
+          "name": "Tops Premium Synthetic Vinegar",
+          "image": "asianSauceTopsVinegar",
+          "weight": "500ml",
+          "tag": "White",
+          "deliveryTime": "17",
+          "mrp": "60",
+          "title": "Tops Premium Vinegar"
+        },
+        {
+          "name": "Real Thai Red Curry Paste",
+          "image": "asianSauceRealThaiCurry",
+          "weight": "200g",
+          "tag": "Curry paste",
+          "deliveryTime": "19",
+          "mrp": "180",
+          "title": "Real Thai Red Curry"
+        }
+      ]
+    }
+  ]
+}
