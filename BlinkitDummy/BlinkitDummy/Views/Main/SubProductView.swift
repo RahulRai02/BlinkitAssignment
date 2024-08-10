@@ -14,7 +14,7 @@ struct SubProductView: View {
     ]
     @State private var selectedCategory: Category? = mockCategories.first
     private let pullDownThreshold: CGFloat = -80
-    private let pullUpThreshold: CGFloat = 200
+    private let pullUpThreshold: CGFloat = 180
 
     @State private var previousCategoryIndex: Int? = 0
 
@@ -27,15 +27,18 @@ struct SubProductView: View {
     @State var offset: CGPoint = .zero
     @State var contentHeight: CGFloat = 0
     @State var visibleContentHeight: CGFloat = 0
+    @State private var isMovingToNextCategory = true
+    
+    
     
 
 
     var body: some View {
+        
         VStack {
             NavigationBar()
                 .frame(height: UIScreen.main.bounds.height * 0.05)
             HStack(spacing:0){
-//                ScrollViewReader { scrollViewProxy in
                     ScrollView{
                         VStack(spacing:0){
                             
@@ -48,7 +51,6 @@ struct SubProductView: View {
                                 CategoriesView(category: category,
                                                isSelected: category == selectedCategory )
 
-                                
                                 .onTapGesture {
 //                                    print("Category at index \(index) tapped")
                                     withAnimation(.easeInOut) {
@@ -63,59 +65,89 @@ struct SubProductView: View {
                         }
 
                     }
-//                }
+
                 .frame(width: UIScreen.main.bounds.width * 0.15)
                 
                 ScrollViewReader{ scrollProxy in
                     CustomScrollView(offset: $offset,contentHeight: $contentHeight, visibleContentHeight: $visibleContentHeight, showIndicators: true, axis: .vertical) {
-                        LazyVGrid(columns: columns, spacing:0) {
-                            if let selectedCategory = selectedCategory{
-//                                withAnimation(.easeInOut(duration: 1.5)){
+                        withAnimation(.easeInOut(duration: 2)) {
+                            LazyVGrid(columns: columns,alignment: .trailing, spacing:0) {
+                                if let selectedCategory = selectedCategory{
                                     ForEach(selectedCategory.products, id: \.id){ product in
                                         CategoryItemView(product: product)
+                                            .id(product.id)
+                                           
                                     }
                                 }
+                            }
+                            .onChange(of: selectedCategory) { oldValue, newValue in
+                                if let firstProduct = selectedCategory?.products.first {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        withAnimation(.easeInOut(duration: 0.4)) {
+                                            scrollProxy.scrollTo(firstProduct.id, anchor: .top)
+                                        }
+                                    }
+                                }
+                            }
+                
+                        
+//                            .safeAreaInset(edge: .top) {
+//                                if offset.y < 0 {
+//                                    VStack{
+//                                        Image(mockCategories[previousCategoryIndex!].image)
+//                                            .resizable()
+//                                            .aspectRatio(contentMode: .fit)
+//                                            .frame(width: 40, height: 40)
+//                                            .clipShape(Circle())
+//                                       
+//                                     
+//                                    }
+//
+//                                }
 //                            }
                         }
-  
-//                        .onChange(of: selectedCategory) { _,_ in
-//                            // Scroll to top when category changes
-//                            scrollProxy.scrollTo(selectedCategory?.products.first?.id, anchor: .top)
-//                        }
-                            
                     }
+                    .onChange(of: offset.y, { oldValue, newValue in
+                     
+                        
+                        
+                        if newValue < pullDownThreshold {
+                            // Handle pull down
+                            print("Pull down detected")
+                            isMovingToNextCategory = false
+                            handleDragPullDown()
+                            
+                        } else if ((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight < 0) {
+                            // Handle pull up
+                            print("\(((visibleContentHeight - contentHeight) + offset.y))")
+                            print("Pull up detected")
+                            isMovingToNextCategory = true
+                            handleDragPullUp()
+                            
+                        }else if(((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight > 0)){
+                            if newValue < pullDownThreshold{
+                                print("Pull down detected")
+                                isMovingToNextCategory = false
+                                handleDragPullDown()
+                            }else if(newValue > 140){
+                                print("Pull up detected")
+                                isMovingToNextCategory = true
+                                handleDragPullUp()
+                            }
+                        }
+            
+                        if (offset.y == 0){
+                                print("Updating indices")
+                                updateIndices() // Update indices if offset is 0 after interaction
+                            }
+                    })
+                
+                    
                 }
                 
                 
-                .onChange(of: offset.y, { oldValue, newValue in
-                    if newValue < pullDownThreshold {
-                        // Handle pull down
-                        print("Pull down detected")
-                        handleDragPullDown()
-                        // Your logic for pull down, e.g., refresh content
-                    } else if ((visibleContentHeight - contentHeight) + offset.y) >= 140 && (visibleContentHeight - contentHeight < 0) {
-                        // Handle pull up
-                        print("\(((visibleContentHeight - contentHeight) + offset.y))")
-                        print("Pull up detected")
-                        handleDragPullUp()
-                        // Your logic for pull up, e.g., load more data
-                    }else if(((visibleContentHeight - contentHeight) + offset.y) >= 140 && (visibleContentHeight - contentHeight > 0)){
-                        if newValue < pullDownThreshold{
-                            print("Pull down detected")
-                            handleDragPullDown()
-                        }else if(newValue > 140){
-                            print("Pull up detected")
-                            handleDragPullUp()
-                        }
-                    }
-                    
-                        if offset.y == 0 {
-                            print("Updating indices")
-                            updateIndices() // Update indices if offset is 0 after interaction
-                        }
-                    
+                
 
-                })
                 
                 .offset(x: 5)
 
@@ -126,18 +158,20 @@ struct SubProductView: View {
     }
     func handleDragPullDown(){
         moveToPreviousCategory()
+            
     }
     
     func handleDragPullUp(){
         moveToNextCategory()
+        
     }
 
     func moveToPreviousCategory() {
             
-            guard let previousCategoryIndex = previousCategoryIndex else { return }
-        withAnimation(.easeInOut(duration: 0.7)){
+        guard let previousCategoryIndex = previousCategoryIndex else { return }
+//        withAnimation(.easeInOut(duration: 0.7)){
                 selectedCategory = mockCategories[previousCategoryIndex]
-            }
+//            }
         }
 
         func moveToNextCategory() {
@@ -145,10 +179,7 @@ struct SubProductView: View {
             
                 guard let nextCategoryIndex = nextCategoryIndex else { return }
                 if nextCategoryIndex < mockCategories.count{
-                    withAnimation(.easeInOut(duration: 0.7)){
-                        selectedCategory = mockCategories[nextCategoryIndex]
-                    }
-                    
+                    selectedCategory = mockCategories[nextCategoryIndex]
                 }
                 
         }
@@ -163,6 +194,7 @@ struct SubProductView: View {
                 print("Next category item selected index is \(String(describing: nextCategoryIndex))")
             }
         }
+
 }
 
 //#Preview {

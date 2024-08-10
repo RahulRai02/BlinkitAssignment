@@ -52,16 +52,11 @@ struct CustomScrollView<Content: View>: View{
                 .overlay (
                     GeometryReader{proxy -> Color in
                         let rect = proxy.frame(in: .global)
-//                        Text("\(proxy.size.heigh)")
-//                        print("Content size: \(proxy.size)")
-//                        print("UIScreen height: \(UIScreen.main.bounds.height)")
-               
                             if startOffset == .zero {
                                 DispatchQueue.main.async {
 //                                    print("THe height of the scroll bar is \(proxy.size.height)")
                                     startOffset = CGPoint(x: rect.minX, y: rect.minY)
                                 }
-                                
                             }
                             
                         DispatchQueue.main.async {
@@ -70,11 +65,9 @@ struct CustomScrollView<Content: View>: View{
                         }
                         
                         return Color.clear
-                            
-                        
                     }
                     // Also fetching horziontal offset, setting width to full such thtat minX = 0
-                        .frame(width:UIScreen.main.bounds.width, height: 0)
+                    .frame(width:UIScreen.main.bounds.width, height: 0)
                     ,alignment: .top
                 )
         }
