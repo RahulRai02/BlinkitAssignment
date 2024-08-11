@@ -10,15 +10,9 @@ import Foundation
 class SubProductViewModel: ObservableObject{
     @Published var categories: [Category] = []
     @Published var selectedCategory: Category?
-//    @Published var isSelected = false
-//    @Published var selectedCategoryId: UUID?
-    
     @Published var previousCategoryIndex: Int? = 0
     @Published var nextCategoryIndex: Int? = 1
-//    @Published var offset: CGPoint = .zero
-//    @Published var contentHeight: CGFloat = 0
-//    @Published var visibleContentHeight: CGFloat = 0
-    
+
     
     func fetchCategoriesAndProducts(){
         // If network logic comes, we can add here
@@ -40,6 +34,14 @@ class SubProductViewModel: ObservableObject{
         }
     }
     
+    func updateIndices() {
+        guard let selectedCategoryId = selectedCategory?.id else { return }
+        if let currentIndex = categories.firstIndex(where: { $0.id == selectedCategoryId }) {
 
+            previousCategoryIndex = max(0, currentIndex - 1)
+//            nextCategoryIndex = currentIndex < categories.count - 1 ? currentIndex + 1 : categories.count - 1
+            nextCategoryIndex = min(categories.count - 1, currentIndex + 1)
+        }
+    }
     
 }

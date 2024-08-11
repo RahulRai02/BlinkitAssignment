@@ -13,7 +13,7 @@ import SwiftUI
 
 class ScrollViewModel: ObservableObject {
     @Published var offset: CGPoint = .zero
-    @Published var contentHeight: CGFloat = 0
+    @Published var totalContentHeight: CGFloat = 0
     @Published var visibleContentHeight: CGFloat = 0
     @Published var pullDownProgress: CGFloat = 0
     @Published var pullUpProgress: CGFloat = 0
@@ -29,12 +29,15 @@ class ScrollViewModel: ObservableObject {
         updatePullDownProgress()
         if offset.y < pullDownThreshold {
             onPullDown?()
-        } else if ((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight < 0) {
+        } else if ((visibleContentHeight - totalContentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - totalContentHeight < 0) {
+            // Case when the products occupy more space, like when we have the scroll view for scrolling items (Activated scroll View)
             onPullUp?()
-        } else if ((visibleContentHeight - contentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - contentHeight > 0) {
+        } else if ((visibleContentHeight - totalContentHeight) + offset.y) >= pullUpThreshold && (visibleContentHeight - totalContentHeight > 0) {
             if offset.y < pullDownThreshold {
+                // Case when there are less products, and we need to decide based on offset. If offset goes negative below threshold then pull down
                 onPullDown?()
             } else if offset.y > 120 {
+                // Case when there are less products, and we need to decide based on offset, if offset goes above threshold, then pull up
                 onPullUp?()
             }
         }
@@ -43,6 +46,5 @@ class ScrollViewModel: ObservableObject {
     private func updatePullDownProgress() {
         pullDownProgress = max(0, min(1, offset.y / -80))
     }
-
 }
 

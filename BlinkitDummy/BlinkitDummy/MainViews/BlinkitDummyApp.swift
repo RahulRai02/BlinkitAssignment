@@ -9,13 +9,9 @@ import SwiftUI
 
 @main
 struct BlinkitDummyApp: App {
-    
-//    var scrollContents = scrollValues()
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .environmentObject(scrollContents)
         }
     }
 }

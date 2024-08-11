@@ -11,7 +11,7 @@ struct CircularPercentageView: View {
     var progress: CGFloat // Progress as a percentage between 0 and 1
     
     
-    private let lineWidth: CGFloat = 3
+    private let lineWidth: CGFloat = 2
     private let trackColor = Color.gray.opacity(0.3)
     private let progressColor = Color.green
     

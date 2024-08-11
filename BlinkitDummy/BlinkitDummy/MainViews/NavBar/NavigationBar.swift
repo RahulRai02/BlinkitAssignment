@@ -33,15 +33,13 @@ struct NavigationBar: View {
                 
                 
             }
-            .frame(height: 52)
+            .frame(height: 10)
         }
-        .frame(height: 60, alignment: .top)
+        .frame(height: 15, alignment: .top)
         .padding(.horizontal, 15)
-        .padding(.top, 50)
+        .padding(.top, 30)
         .background(Color.white)
         .frame(maxHeight: .infinity, alignment: .top)
-        .ignoresSafeArea()
-        
     }
 }
 

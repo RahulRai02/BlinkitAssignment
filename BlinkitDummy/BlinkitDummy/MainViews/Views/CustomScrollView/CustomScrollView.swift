@@ -9,17 +9,18 @@ import Foundation
 import SwiftUI
 
 struct CustomScrollView<Content: View>: View{
-    
     var content: Content
-    @Binding var offset: CGPoint
-    @Binding var contentHeight: CGFloat
-    @Binding var visibleContentHeight: CGFloat
-    
     var showIndicators: Bool
     var axis: Axis.Set
     
-    // Since it will carry multiple views, it will be a closure and will return a view
+    @Binding var offset: CGPoint
+    @Binding var contentHeight: CGFloat
+    @Binding var visibleContentHeight: CGFloat
+
+    // Starting offset of content
+    @State var startOffset: CGPoint = .zero
     
+    // Closure takes a view returns a view
     init(offset: Binding<CGPoint>, contentHeight: Binding<CGFloat>, visibleContentHeight: Binding<CGFloat>  , showIndicators: Bool, axis: Axis.Set, @ViewBuilder content: () -> Content) {
         self.content = content()
         self._offset = offset
@@ -29,15 +30,8 @@ struct CustomScrollView<Content: View>: View{
         self.axis = axis
         
     }
-    // Getting Exact Start Offset And Minu from current Offset...
-    // So that crt offset will be obtained...
-    @State var startOffset: CGPoint = .zero
-//    @State private var isAtBottom: Bool = false
-    
 
-    
     var body: some View{
-        
         ScrollView(axis, showsIndicators: showIndicators) {
             content
                 .background(GeometryReader{ geometry in
@@ -48,13 +42,11 @@ struct CustomScrollView<Content: View>: View{
                         contentHeight = newHeight
                     }
                 })
-
                 .overlay (
                     GeometryReader{proxy -> Color in
                         let rect = proxy.frame(in: .global)
                             if startOffset == .zero {
                                 DispatchQueue.main.async {
-//                                    print("THe height of the scroll bar is \(proxy.size.height)")
                                     startOffset = CGPoint(x: rect.minX, y: rect.minY)
                                 }
                             }
@@ -66,11 +58,10 @@ struct CustomScrollView<Content: View>: View{
                         
                         return Color.clear
                     }
-                    // Also fetching horziontal offset, setting width to full such thtat minX = 0
-                    .frame(width:UIScreen.main.bounds.width, height: 0)
                     ,alignment: .top
                 )
         }
+        // To get the visble content height
         .overlay{
             Color.clear
                 GeometryReader { geoP in
@@ -78,11 +69,11 @@ struct CustomScrollView<Content: View>: View{
                         .onAppear {
                             self.visibleContentHeight = geoP.frame(in: .local).height
                         }
+                        // OnChange is given so that visibleContentHeight updates when category changes
                         .onChange(of: visibleContentHeight) { _, newVal in
                             visibleContentHeight = newVal
                         }
                     }
         }
-
     }
 }

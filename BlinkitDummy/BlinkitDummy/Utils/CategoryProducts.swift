@@ -23,7 +23,7 @@ struct Category: Codable,Identifiable, Equatable{
     
     var id = UUID()
     let name: String
-    let image: String // Local image name for the category
+    let image: String
     let products: [Product]
 }
 
@@ -41,10 +41,10 @@ struct Product: Codable, Identifiable {
     
     let id = UUID()
     let name: String
-    let image: String // Local image name
-    let weight: String // e.g., "500g", "200ml"
+    let image: String
+    let weight: String
     let tag: String
-    let deliveryTime: String // Random value between 10 and 15
-    let mrp: String // Maximum Retail Price
-    let title: String // A title for the product
+    let deliveryTime: String
+    let mrp: String
+    let title: String
 }

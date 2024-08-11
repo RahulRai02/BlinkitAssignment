@@ -14,11 +14,8 @@ struct CategoryItemView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 0)
                 .fill(Color.white)
-//                .shadow(color: Color.gray.opacity(0.3), radius: 5)
-                .aspectRatio(1/1.7, contentMode: .fit) // dynamix height karne ke liye
-            //1/1.8 rakha tha pehle
-                
-            
+                .aspectRatio(1/1.7, contentMode: .fit)  // Used aspect ratio because height will vary based on device
+
             VStack(alignment: .leading, spacing: 2) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 15)
@@ -54,12 +51,5 @@ struct CategoryItemView: View {
             .padding()
             .padding(.top, -45)
         }
-//        .padding(.vertical, 10)
-//        .padding(.horizontal, 5)
     }
 }
-
-//
-//#Preview {
-//    CategoryItemView(product: Product(id: UUID(), name: "Maggi Hot and Sweet Tomato Ketchup", image: "maggiHotAndSweetKetchup", weight: "500g", tag: "Chili", deliveryTime: Int.random(in: 10...15), mrp: "115", title: "Maggi Hot and Sweet"))
-//}

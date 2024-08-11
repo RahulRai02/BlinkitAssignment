@@ -16,10 +16,7 @@ struct ContentView: View {
             }label: {
                 Text("Sauces & Spreads")
             }
-
         }
-
-        
     }
 }
 
