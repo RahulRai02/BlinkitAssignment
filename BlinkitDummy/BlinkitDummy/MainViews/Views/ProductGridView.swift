@@ -46,26 +46,52 @@ struct ProductGridView: View {
                     }
                 }
             }
+             .onAppear {
+                 // Assign callbacks
+                 viewModel.onReachedTopCategory = {
+                     scrollViewModel.isAtTop = true
+                     print("Top category reached")
+                 }
+                 
+                 viewModel.onReachedBottomCategory = {
+                     scrollViewModel.isAtBottom = true
+                     print("Bottom category reached")
+                    
+                 }
+             }
             .onChange(of: scrollViewModel.offset.y, { oldValue, newValue in
                 scrollViewModel.handleScroll()
                 if (scrollViewModel.offset.y == 0){
-                    print("Updating indices")
+//                    print("Updating indices")
                     viewModel.updateIndices()
                 }
             })
+            
             .overlay(
-                CircularPercentageView(progress: scrollViewModel.pullDownProgress)
-                    .opacity(scrollViewModel.pullDownProgress)
-                    .offset(y: max(-10, scrollViewModel.offset.y/3))
-                , alignment: .top
+                scrollViewModel.isAtTop == false ?
+                    ProgressBarWithPercentageView(progress: scrollViewModel.pullDownProgress)
+                        .opacity(scrollViewModel.pullDownProgress)
+                        .offset(y: max(-10, scrollViewModel.offset.y/3)) :
+                    nil,
+                alignment: .top
             )
-//                    .overlay(
-//                        CircularPercentageView(progress: scrollViewModel.pullUpProgress)
-//                        , alignment: .bottom
-//                    )
+
+//            .overlay(
+//                ProgressBarWithPercentageView(progress: scrollViewModel.pullDownProgress)
+//                    .opacity(scrollViewModel.pullDownProgress)
+//                    .offset(y: max(-10, scrollViewModel.offset.y/3))
+//                , alignment: .top
+//                
+//            )
+            .overlay(
+                ProgressBarWithPercentageView(progress: scrollViewModel.pullUpProgress)
+                    .opacity(scrollViewModel.pullUpProgress)
+                , alignment: .bottom
+            )
 
         }
         .offset(x: 5)
         .frame(width: UIScreen.main.bounds.width * ProductGridView.rightPanelWidthRatio)
     }
 }
+

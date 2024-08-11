@@ -21,7 +21,7 @@ struct SubProductView: View {
             NavigationBar()
                 .frame(height: UIScreen.main.bounds.height * 0.06)
             HStack(spacing:0){
-                CategoryListView(viewModel: viewModel)
+                CategoryListView(viewModel: viewModel, scrollViewModel: scrollViewModel)
                 ProductGridView(viewModel: viewModel, scrollViewModel: scrollViewModel)
             }
         }

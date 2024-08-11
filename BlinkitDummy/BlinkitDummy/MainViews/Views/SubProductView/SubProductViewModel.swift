@@ -12,6 +12,9 @@ class SubProductViewModel: ObservableObject{
     @Published var selectedCategory: Category?
     @Published var previousCategoryIndex: Int? = 0
     @Published var nextCategoryIndex: Int? = 1
+    
+    var onReachedTopCategory: (() -> Void)?
+    var onReachedBottomCategory: (() -> Void)?
 
     
     func fetchCategoriesAndProducts(){
@@ -37,10 +40,24 @@ class SubProductViewModel: ObservableObject{
     func updateIndices() {
         guard let selectedCategoryId = selectedCategory?.id else { return }
         if let currentIndex = categories.firstIndex(where: { $0.id == selectedCategoryId }) {
-
-            previousCategoryIndex = max(0, currentIndex - 1)
-//            nextCategoryIndex = currentIndex < categories.count - 1 ? currentIndex + 1 : categories.count - 1
-            nextCategoryIndex = min(categories.count - 1, currentIndex + 1)
+            if currentIndex > 0 {
+                previousCategoryIndex = currentIndex - 1
+            } else {
+                previousCategoryIndex = 0
+               
+                print("Reached the top category")
+            }
+            
+            if currentIndex < categories.count - 1 {
+                nextCategoryIndex = currentIndex + 1
+            } else {
+                nextCategoryIndex = categories.count - 1
+              
+                print("Reached the bottom category")
+            }
+//            
+//            previousCategoryIndex = max(0, currentIndex - 1)
+//            nextCategoryIndex = min(categories.count - 1, currentIndex + 1)
         }
     }
     

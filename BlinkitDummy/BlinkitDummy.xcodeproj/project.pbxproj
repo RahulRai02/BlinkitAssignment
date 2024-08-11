@@ -11,7 +11,7 @@
 		B763F2E42C67F514002C68C4 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B763F2E32C67F514002C68C4 /* mockJson.json */; };
 		B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E52C67F785002C68C4 /* CategoryProducts.swift */; };
 		B763F2EC2C680CA1002C68C4 /* CustomScrollViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2EB2C680CA0002C68C4 /* CustomScrollViewModel.swift */; };
-		B763F2F02C681EBE002C68C4 /* CircularPerecentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2EF2C681EBD002C68C4 /* CircularPerecentageView.swift */; };
+		B763F2F02C681EBE002C68C4 /* ProgressBarPerecentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2EF2C681EBD002C68C4 /* ProgressBarPerecentageView.swift */; };
 		B763F2F62C689FC9002C68C4 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2F52C689FC9002C68C4 /* CategoryListView.swift */; };
 		B763F2F82C68A183002C68C4 /* ProductGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2F72C68A183002C68C4 /* ProductGridView.swift */; };
 		B79916BF2C63CE5C00E5A5FF /* BlinkitDummyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79916BE2C63CE5C00E5A5FF /* BlinkitDummyApp.swift */; };
@@ -33,7 +33,7 @@
 		B763F2E32C67F514002C68C4 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
 		B763F2E52C67F785002C68C4 /* CategoryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoryProducts.swift; path = BlinkitDummy/Utils/CategoryProducts.swift; sourceTree = SOURCE_ROOT; };
 		B763F2EB2C680CA0002C68C4 /* CustomScrollViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollViewModel.swift; sourceTree = "<group>"; };
-		B763F2EF2C681EBD002C68C4 /* CircularPerecentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularPerecentageView.swift; sourceTree = "<group>"; };
+		B763F2EF2C681EBD002C68C4 /* ProgressBarPerecentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarPerecentageView.swift; sourceTree = "<group>"; };
 		B763F2F52C689FC9002C68C4 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		B763F2F72C68A183002C68C4 /* ProductGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductGridView.swift; sourceTree = "<group>"; };
 		B79916BB2C63CE5C00E5A5FF /* BlinkitDummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlinkitDummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,7 +178,7 @@
 				B79916D32C63E7E300E5A5FF /* CategoriesView.swift */,
 				B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */,
 				B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */,
-				B763F2EF2C681EBD002C68C4 /* CircularPerecentageView.swift */,
+				B763F2EF2C681EBD002C68C4 /* ProgressBarPerecentageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -264,7 +264,7 @@
 				B763F2EC2C680CA1002C68C4 /* CustomScrollViewModel.swift in Sources */,
 				B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */,
 				B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */,
-				B763F2F02C681EBE002C68C4 /* CircularPerecentageView.swift in Sources */,
+				B763F2F02C681EBE002C68C4 /* ProgressBarPerecentageView.swift in Sources */,
 				B79916C12C63CE5C00E5A5FF /* ContentView.swift in Sources */,
 				B79916BF2C63CE5C00E5A5FF /* BlinkitDummyApp.swift in Sources */,
 				B763F2F82C68A183002C68C4 /* ProductGridView.swift in Sources */,
