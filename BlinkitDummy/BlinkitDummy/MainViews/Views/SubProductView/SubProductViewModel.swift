@@ -45,7 +45,7 @@ class SubProductViewModel: ObservableObject{
             } else {
                 previousCategoryIndex = 0
                
-                print("Reached the top category")
+//                print("Reached the top category")
             }
             
             if currentIndex < categories.count - 1 {
@@ -53,7 +53,7 @@ class SubProductViewModel: ObservableObject{
             } else {
                 nextCategoryIndex = categories.count - 1
               
-                print("Reached the bottom category")
+//                print("Reached the bottom category")
             }
 //            
 //            previousCategoryIndex = max(0, currentIndex - 1)

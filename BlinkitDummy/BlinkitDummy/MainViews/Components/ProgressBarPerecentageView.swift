@@ -8,8 +8,9 @@
 
 import SwiftUI
 
-struct ProgressBarWithPercentageView: View {
+struct ProgressBar: View {
     var progress: CGFloat // Progress as a percentage between 0 and 1
+
     
     private let trackHeight: CGFloat = 2
     private let trackColor = Color.gray.opacity(0.3)
@@ -24,9 +25,7 @@ struct ProgressBarWithPercentageView: View {
                     .foregroundColor(trackColor)
                 
                 RoundedRectangle(cornerRadius: trackHeight / 2)
-                
                     .frame(width: min(max(progress, 0), 1) * 100, height: trackHeight)
-                
                     .foregroundStyle(LinearGradient(
                         gradient: Gradient(colors: gradientColors),
                         startPoint: .leading,

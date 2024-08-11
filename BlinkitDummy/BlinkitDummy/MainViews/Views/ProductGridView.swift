@@ -50,12 +50,12 @@ struct ProductGridView: View {
                  // Assign callbacks
                  viewModel.onReachedTopCategory = {
                      scrollViewModel.isAtTop = true
-                     print("Top category reached")
+//                     print("Top category reached")
                  }
                  
                  viewModel.onReachedBottomCategory = {
                      scrollViewModel.isAtBottom = true
-                     print("Bottom category reached")
+//                     print("Bottom category reached")
                     
                  }
              }
@@ -68,25 +68,17 @@ struct ProductGridView: View {
             })
             
             .overlay(
-                scrollViewModel.isAtTop == false ?
-                    ProgressBarWithPercentageView(progress: scrollViewModel.pullDownProgress)
-                        .opacity(scrollViewModel.pullDownProgress)
-                        .offset(y: max(-10, scrollViewModel.offset.y/3)) :
-                    nil,
-                alignment: .top
+               ProgressBar(progress: scrollViewModel.pullDownProgress)
+                    .opacity(scrollViewModel.pullDownProgress)
+                    .offset(y: max(-10, scrollViewModel.offset.y/3))
+                  
+                    ,alignment: .top
             )
-
-//            .overlay(
-//                ProgressBarWithPercentageView(progress: scrollViewModel.pullDownProgress)
-//                    .opacity(scrollViewModel.pullDownProgress)
-//                    .offset(y: max(-10, scrollViewModel.offset.y/3))
-//                , alignment: .top
-//                
-//            )
             .overlay(
-                ProgressBarWithPercentageView(progress: scrollViewModel.pullUpProgress)
+                ProgressBar(progress: scrollViewModel.pullUpProgress)
                     .opacity(scrollViewModel.pullUpProgress)
-                , alignment: .bottom
+                  
+                ,alignment: .bottom
             )
 
         }
