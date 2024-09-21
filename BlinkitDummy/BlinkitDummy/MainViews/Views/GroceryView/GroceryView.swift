@@ -11,22 +11,28 @@ struct CategoryItem: View {
     var category: Category
     
     var body: some View {
-//        CategoryItem(category:  category)
-        VStack(spacing:0) {
-            Image(category.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
-                .padding()
+        VStack(alignment: .leading, spacing: 2) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.lightGrey)
+                    
 
+                Image(category.image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+
+            }
             Text(category.name)
-                .font(.system(size: 11).weight(.medium))
+                .font(.system(size: 14).weight(.medium))
                 .lineLimit(2)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(1)
+                .foregroundStyle(Color.black)
         }
-        .frame(width: 100, height: 120)
+        .padding()
+//        .padding(.top, -45)
     }
 }
+
 let columns = [
     GridItem(.flexible(), spacing: 0),
     GridItem(.flexible(), spacing: 0),
@@ -71,8 +77,8 @@ struct GroceryView: View {
                 ForEach(viewModel.categories){ category in
                     CategorySection(headerTitle: category.name, categories: viewModel.categories)
                 }
-//                CategorySection(headerTitle: "Grocery & Kitchen", categories: [Category(name: "Sauces & Spreads", image: "ketchup", products: [])])
-//                                
+
+//
 //            
                 }
             .padding(.top, 16)

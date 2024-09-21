@@ -54,6 +54,7 @@ struct MainNavigationBar: View {
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
+                .toolbar(.hidden)
                 
             }
             .frame(maxWidth: .infinity)

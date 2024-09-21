@@ -14,25 +14,19 @@ struct ContentView: View {
         TabView {
             CustomNavView {
                 ZStack{
-//                    CustomNavLink {
-//                        SubProductView()
-//                    } label: {
-//                        Text("Sauces & Spreads")
-//                    }
                     GroceryView()
-                        
                 }
                 .customNavBarItems(title: "Blinkit in", minutes: "9", address: "136 Sector - 28, Faridabad", backButtonHidden: false, isSurgeApplicable: true)
             }
             .tabItem {
-                Image(systemName: "cart.fill")
-                Text("Products")
+                Image(systemName: "house")
+                Text("Home")
             }
             
-            Text("Orders")
+            Text("Cart")
                 .tabItem {
-                    Image(systemName: "list.bullet")
-                    Text("Orders")
+                    Image(systemName: "cart.fill")
+                    Text("Cart")
                 }
             
             AccountScreen()
