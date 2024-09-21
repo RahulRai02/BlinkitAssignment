@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7202ED52C9F39E100B4C490 /* MainNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202ED42C9F39E100B4C490 /* MainNavigationBar.swift */; };
+		B7202ED72C9F3A0400B4C490 /* CustomNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202ED62C9F3A0400B4C490 /* CustomNavView.swift */; };
+		B7202ED92C9F3A2800B4C490 /* CustomNavBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202ED82C9F3A2800B4C490 /* CustomNavBarContainerView.swift */; };
+		B7202EDB2C9F3A3B00B4C490 /* CustomNavLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EDA2C9F3A3B00B4C490 /* CustomNavLink.swift */; };
+		B7202EDD2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EDC2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift */; };
+		B7202EDF2C9F3AC500B4C490 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EDE2C9F3AC500B4C490 /* AccountScreen.swift */; };
+		B7202EE12C9F3AF800B4C490 /* LocationBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EE02C9F3AF800B4C490 /* LocationBottomSheet.swift */; };
 		B763F2E22C67C901002C68C4 /* SubProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */; };
 		B763F2E42C67F514002C68C4 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B763F2E32C67F514002C68C4 /* mockJson.json */; };
 		B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E52C67F785002C68C4 /* CategoryProducts.swift */; };
@@ -28,6 +35,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7202ED42C9F39E100B4C490 /* MainNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationBar.swift; sourceTree = "<group>"; };
+		B7202ED62C9F3A0400B4C490 /* CustomNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavView.swift; sourceTree = "<group>"; };
+		B7202ED82C9F3A2800B4C490 /* CustomNavBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarContainerView.swift; sourceTree = "<group>"; };
+		B7202EDA2C9F3A3B00B4C490 /* CustomNavLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavLink.swift; sourceTree = "<group>"; };
+		B7202EDC2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarPreferenceKey.swift; sourceTree = "<group>"; };
+		B7202EDE2C9F3AC500B4C490 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
+		B7202EE02C9F3AF800B4C490 /* LocationBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBottomSheet.swift; sourceTree = "<group>"; };
 		B763F2E02C67BB8E002C68C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubProductViewModel.swift; sourceTree = "<group>"; };
 		B763F2E32C67F514002C68C4 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
@@ -61,6 +75,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7202ED32C9F398600B4C490 /* MainNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				B7202ED42C9F39E100B4C490 /* MainNavigationBar.swift */,
+				B7202ED62C9F3A0400B4C490 /* CustomNavView.swift */,
+				B7202ED82C9F3A2800B4C490 /* CustomNavBarContainerView.swift */,
+				B7202EDA2C9F3A3B00B4C490 /* CustomNavLink.swift */,
+				B7202EDC2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift */,
+			);
+			path = MainNavigationBar;
+			sourceTree = "<group>";
+		};
 		B763F2E92C680C44002C68C4 /* SubProductView */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +163,7 @@
 			children = (
 				B79916BE2C63CE5C00E5A5FF /* BlinkitDummyApp.swift */,
 				B79916C02C63CE5C00E5A5FF /* ContentView.swift */,
+				B7202ED32C9F398600B4C490 /* MainNavigationBar */,
 				B763F2F22C68317E002C68C4 /* NavBar */,
 				B79916CF2C63E57300E5A5FF /* Views */,
 				B79916D02C63E57C00E5A5FF /* Components */,
@@ -168,6 +195,8 @@
 				B763F2F52C689FC9002C68C4 /* CategoryListView.swift */,
 				B763F2F72C68A183002C68C4 /* ProductGridView.swift */,
 				B763F2EA2C680C62002C68C4 /* CustomScrollView */,
+				B7202EDE2C9F3AC500B4C490 /* AccountScreen.swift */,
+				B7202EE02C9F3AF800B4C490 /* LocationBottomSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,16 +286,23 @@
 				B79916D62C63F02F00E5A5FF /* NavigationBar.swift in Sources */,
 				B79916D42C63E7E300E5A5FF /* CategoriesView.swift in Sources */,
 				B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */,
+				B7202EDD2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift in Sources */,
 				B763F2E22C67C901002C68C4 /* SubProductViewModel.swift in Sources */,
 				B79916D22C63E74800E5A5FF /* SubProductView.swift in Sources */,
+				B7202ED92C9F3A2800B4C490 /* CustomNavBarContainerView.swift in Sources */,
 				B763F2F62C689FC9002C68C4 /* CategoryListView.swift in Sources */,
+				B7202ED72C9F3A0400B4C490 /* CustomNavView.swift in Sources */,
 				B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */,
 				B763F2EC2C680CA1002C68C4 /* CustomScrollViewModel.swift in Sources */,
 				B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */,
 				B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */,
+				B7202EDB2C9F3A3B00B4C490 /* CustomNavLink.swift in Sources */,
 				B763F2F02C681EBE002C68C4 /* ProgressBar.swift in Sources */,
 				B79916C12C63CE5C00E5A5FF /* ContentView.swift in Sources */,
+				B7202ED52C9F39E100B4C490 /* MainNavigationBar.swift in Sources */,
+				B7202EE12C9F3AF800B4C490 /* LocationBottomSheet.swift in Sources */,
 				B79916BF2C63CE5C00E5A5FF /* BlinkitDummyApp.swift in Sources */,
+				B7202EDF2C9F3AC500B4C490 /* AccountScreen.swift in Sources */,
 				B763F2F82C68A183002C68C4 /* ProductGridView.swift in Sources */,
 				B79916E22C66049000E5A5FF /* CustomScrollView.swift in Sources */,
 			);
