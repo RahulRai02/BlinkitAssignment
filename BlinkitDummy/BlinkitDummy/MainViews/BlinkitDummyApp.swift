@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BlinkitDummyApp: App {
+//    @StateObject var viewModel = SubProductViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+               
         }
     }
 }

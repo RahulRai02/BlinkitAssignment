@@ -66,7 +66,7 @@ struct AccountScreen: View {
                 .toggleStyle(SwitchToggleStyle(tint: .green))
                 
             }
-            .navigationTitle("Account")
+            .navigationTitle("My Account")
         }
 //        .onAppear{
 //            viewModel.retriveUser()
