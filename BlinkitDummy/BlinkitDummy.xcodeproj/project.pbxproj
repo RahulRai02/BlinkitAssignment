@@ -17,6 +17,9 @@
 		B7202EE32C9F3FD800B4C490 /* GroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EE22C9F3FD800B4C490 /* GroceryView.swift */; };
 		B7202EE52C9F460B00B4C490 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EE42C9F460B00B4C490 /* DummyView.swift */; };
 		B7202EE82C9F542500B4C490 /* GroceryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EE72C9F542500B4C490 /* GroceryViewModel.swift */; };
+		B7202EEB2CA02A5800B4C490 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EEA2CA02A5800B4C490 /* OrderView.swift */; };
+		B7202EEF2CA02B1500B4C490 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EEE2CA02B1400B4C490 /* Order.swift */; };
+		B7202EF12CA1F1EE00B4C490 /* ExpandableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202EF02CA1F1EE00B4C490 /* ExpandableButton.swift */; };
 		B763F2E22C67C901002C68C4 /* SubProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */; };
 		B763F2E42C67F514002C68C4 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B763F2E32C67F514002C68C4 /* mockJson.json */; };
 		B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E52C67F785002C68C4 /* CategoryProducts.swift */; };
@@ -48,6 +51,9 @@
 		B7202EE22C9F3FD800B4C490 /* GroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryView.swift; sourceTree = "<group>"; };
 		B7202EE42C9F460B00B4C490 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
 		B7202EE72C9F542500B4C490 /* GroceryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewModel.swift; sourceTree = "<group>"; };
+		B7202EEA2CA02A5800B4C490 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		B7202EEE2CA02B1400B4C490 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		B7202EF02CA1F1EE00B4C490 /* ExpandableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableButton.swift; sourceTree = "<group>"; };
 		B763F2E02C67BB8E002C68C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubProductViewModel.swift; sourceTree = "<group>"; };
 		B763F2E32C67F514002C68C4 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
@@ -100,6 +106,15 @@
 				B7202EE72C9F542500B4C490 /* GroceryViewModel.swift */,
 			);
 			path = GroceryView;
+			sourceTree = "<group>";
+		};
+		B7202EE92CA02A4600B4C490 /* OrderView */ = {
+			isa = PBXGroup;
+			children = (
+				B7202EEA2CA02A5800B4C490 /* OrderView.swift */,
+				B7202EEE2CA02B1400B4C490 /* Order.swift */,
+			);
+			path = OrderView;
 			sourceTree = "<group>";
 		};
 		B763F2E92C680C44002C68C4 /* SubProductView */ = {
@@ -207,6 +222,7 @@
 		B79916CF2C63E57300E5A5FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B7202EE92CA02A4600B4C490 /* OrderView */,
 				B7202EE62C9F53C900B4C490 /* GroceryView */,
 				B763F2E92C680C44002C68C4 /* SubProductView */,
 				B763F2F52C689FC9002C68C4 /* CategoryListView.swift */,
@@ -225,6 +241,7 @@
 				B79916D72C640D0B00E5A5FF /* CategoryItemView.swift */,
 				B79916D92C64A7FA00E5A5FF /* CategoryItemTag.swift */,
 				B763F2EF2C681EBD002C68C4 /* ProgressBar.swift */,
+				B7202EF02CA1F1EE00B4C490 /* ExpandableButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -301,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B79916D62C63F02F00E5A5FF /* NavigationBar.swift in Sources */,
+				B7202EEB2CA02A5800B4C490 /* OrderView.swift in Sources */,
 				B7202EE52C9F460B00B4C490 /* DummyView.swift in Sources */,
 				B79916D42C63E7E300E5A5FF /* CategoriesView.swift in Sources */,
 				B79916DA2C64A7FB00E5A5FF /* CategoryItemTag.swift in Sources */,
@@ -311,10 +329,12 @@
 				B7202ED92C9F3A2800B4C490 /* CustomNavBarContainerView.swift in Sources */,
 				B763F2F62C689FC9002C68C4 /* CategoryListView.swift in Sources */,
 				B7202ED72C9F3A0400B4C490 /* CustomNavView.swift in Sources */,
+				B7202EEF2CA02B1500B4C490 /* Order.swift in Sources */,
 				B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */,
 				B763F2EC2C680CA1002C68C4 /* CustomScrollViewModel.swift in Sources */,
 				B79916D82C640D0C00E5A5FF /* CategoryItemView.swift in Sources */,
 				B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */,
+				B7202EF12CA1F1EE00B4C490 /* ExpandableButton.swift in Sources */,
 				B7202EDB2C9F3A3B00B4C490 /* CustomNavLink.swift in Sources */,
 				B763F2F02C681EBE002C68C4 /* ProgressBar.swift in Sources */,
 				B79916C12C63CE5C00E5A5FF /* ContentView.swift in Sources */,

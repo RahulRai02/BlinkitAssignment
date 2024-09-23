@@ -23,10 +23,10 @@ struct ContentView: View {
                 Text("Home")
             }
             
-            Text("Cart")
+            OrderView()
                 .tabItem {
                     Image(systemName: "cart.fill")
-                    Text("Cart")
+                    Text("Order")
                 }
             
             AccountScreen()

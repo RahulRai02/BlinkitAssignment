@@ -55,6 +55,7 @@ struct MainNavigationBar: View {
                         .frame(width: 40, height: 40)
                 }
                 .toolbar(.hidden)
+                .foregroundStyle(Color.black)
                 
             }
             .frame(maxWidth: .infinity)

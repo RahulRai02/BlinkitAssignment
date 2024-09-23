@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct customButton: View {
-    let buttonTitle: String
+struct customButton<Content: View>: View {
+//    let buttonTitle: String
     let width: CGFloat
     let height: CGFloat
+    let content: () -> Content
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 5)
@@ -22,11 +24,13 @@ struct customButton: View {
                         .strokeBorder(.green.opacity(0.6))
 //                        .blendMode(.lighten)
                 }
-            Text(buttonTitle)
-                .font(.caption)
-                .fontWeight(.medium)
+//            Text(buttonTitle)
+//                .font(.caption)
+//                .fontWeight(.medium)
+//                .frame(width: width, height: height)
+//                .foregroundColor(.green)
+            content()
                 .frame(width: width, height: height)
-                .foregroundColor(.green)
             
                 
 
@@ -35,5 +39,8 @@ struct customButton: View {
 }
 
 #Preview {
-    customButton(buttonTitle: "ADD", width: 260, height: 50)
+//    customButton(buttonTitle: "ADD", width: 260, height: 50)
+    customButton(width: 260, height: 50) {
+        Text("ADD")
+    }
 }

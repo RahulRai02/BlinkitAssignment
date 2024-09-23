@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductGridView: View {
     @ObservedObject var viewModel: SubProductViewModel
     @ObservedObject var scrollViewModel: ScrollViewModel
+    
     static let rightPanelWidthRatio: CGFloat = 0.85
     let columns = [
         GridItem(.flexible(), spacing: 0),

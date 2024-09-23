@@ -27,7 +27,7 @@ struct Category: Codable,Identifiable, Equatable{
     let products: [Product]
 }
 
-struct Product: Codable, Identifiable {
+struct Product: Codable, Identifiable, Equatable {
  
     enum CodingKeys: CodingKey{
         case name

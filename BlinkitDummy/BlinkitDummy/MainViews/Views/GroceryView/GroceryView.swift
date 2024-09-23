@@ -11,21 +11,23 @@ struct CategoryItem: View {
     var category: Category
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(spacing: 2) {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
                     .fill(Color.lightGrey)
+                    .frame(width: 70, height: 70)
                     
-
                 Image(category.image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .frame(width: 55, height: 55)
+                    .clipped()
 
             }
             Text(category.name)
-                .font(.system(size: 14).weight(.medium))
-                .lineLimit(2)
-                .minimumScaleFactor(1)
+                .font(.system(size: 12).weight(.semibold))
+//                .lineLimit(2)
+//                .minimumScaleFactor(1)
                 .foregroundStyle(Color.black)
         }
         .padding()
