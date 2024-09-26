@@ -9,32 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
 //    @StateObject var viewModel = SubProductViewModel()
+    @State private var selection: String = "home"
+    @State private var tabSelection: TabBarItem = .home
     
     var body: some View {
-        TabView {
+        CustomTabBarContainerView(selection: $tabSelection) {
             CustomNavView {
                 ZStack{
                     GroceryView()
                 }
                 .customNavBarItems(title: "Blinkit in", minutes: "9", address: "136 Sector - 28, Faridabad", backButtonHidden: false, isSurgeApplicable: true)
             }
-            .tabItem {
-                Image(systemName: "house")
-                Text("Home")
-            }
+            .tabBarItem(tab: .home,
+                        selection: $tabSelection)
+
             
             OrderView()
-                .tabItem {
-                    Image(systemName: "cart.fill")
-                    Text("Order")
-                }
+                .tabBarItem(tab: .cart,
+                            selection: $tabSelection)
             
             AccountScreen()
-                .tabItem {
-                    Image(systemName: "person.fill")
-                    Text("Account")
-                }
+                .tabBarItem(tab: .profile,
+                            selection: $tabSelection)
         }
+        .tint(.green)
+        .background(Color.lightGrey)
     }
 }
 

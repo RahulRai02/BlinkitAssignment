@@ -15,10 +15,12 @@ enum CategoryDirection {
 struct SubProductView: View {
     @StateObject var viewModel = SubProductViewModel()
     @StateObject private var scrollViewModel = ScrollViewModel()
+    let navTitle: String
+    @State private var hasAppeared = false
 
     var body: some View {
         VStack {
-            NavigationBar()
+            NavigationBar(navTitle: navTitle)
                 .frame(height: UIScreen.main.bounds.height * 0.06)
             HStack(spacing:0){
                 CategoryListView(viewModel: viewModel, scrollViewModel: scrollViewModel)
@@ -26,9 +28,12 @@ struct SubProductView: View {
             }
         }
         .onAppear{
-            // onPullDown & onPullUp are closures, which get triggered when offset changes
-            scrollViewModel.onPullDown = handleDragPullDown
-            scrollViewModel.onPullUp = handleDragPullUp
+            if !hasAppeared {
+                scrollViewModel.onPullDown = handleDragPullDown
+                scrollViewModel.onPullUp = handleDragPullUp
+                viewModel.selectedCategory = viewModel.categories.first
+                hasAppeared = true // Set the flag to true after the first appearance
+            }
         }
     }
     

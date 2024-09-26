@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductGridView: View {
     @ObservedObject var viewModel: SubProductViewModel
     @ObservedObject var scrollViewModel: ScrollViewModel
+    @EnvironmentObject var order: Order
     
     static let rightPanelWidthRatio: CGFloat = 0.85
     let columns = [
@@ -29,6 +30,7 @@ struct ProductGridView: View {
                         if let selectedCategory = viewModel.selectedCategory{
                             ForEach(selectedCategory.products, id: \.id){ product in
                                 CategoryItemView(product: product)
+                                    .environmentObject(order)
                                     .id(product.id)
                                    
                             }
@@ -47,19 +49,19 @@ struct ProductGridView: View {
                     }
                 }
             }
-             .onAppear {
-                 // Assign callbacks
-                 viewModel.onReachedTopCategory = {
-                     scrollViewModel.isAtTop = true
-//                     print("Top category reached")
-                 }
-                 
-                 viewModel.onReachedBottomCategory = {
-                     scrollViewModel.isAtBottom = true
-//                     print("Bottom category reached")
-                    
-                 }
-             }
+//             .onAppear {
+//                 // Assign callbacks
+//                 viewModel.onReachedTopCategory = {
+//                     scrollViewModel.isAtTop = true
+////                     print("Top category reached")
+//                 }
+//                 
+//                 viewModel.onReachedBottomCategory = {
+//                     scrollViewModel.isAtBottom = true
+////                     print("Bottom category reached")
+//                    
+//                 }
+//             }
             .onChange(of: scrollViewModel.offset.y, { oldValue, newValue in
                 scrollViewModel.handleScroll()
                 if (scrollViewModel.offset.y == 0){

@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryListView: View {
     @ObservedObject var viewModel: SubProductViewModel
     @ObservedObject var scrollViewModel: ScrollViewModel
+    @State private var hasAppearedCategory = false
     
     static let leftPanelWidthRatio: CGFloat = 0.15
     
@@ -28,14 +29,18 @@ struct CategoryListView: View {
                         }
                         viewModel.updateIndices()
                     }
-                    .onAppear{
-                        viewModel.selectedCategory = viewModel.categories.first
-                    }
+//                    .onAppear{
+//                        viewModel.selectedCategory = viewModel.categories.first
+//                    }
                 }
             }
         }
         .onAppear{
-            viewModel.fetchCategoriesAndProducts()
+            if !hasAppearedCategory{
+                viewModel.fetchCategoriesAndProducts()
+                hasAppearedCategory = true
+            }
+           
         }
         .frame(width: UIScreen.main.bounds.width * CategoryListView.leftPanelWidthRatio)    // 15 percent criteria
     }

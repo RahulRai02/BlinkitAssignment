@@ -27,7 +27,7 @@ struct Category: Codable,Identifiable, Equatable{
     let products: [Product]
 }
 
-struct Product: Codable, Identifiable, Equatable {
+struct Product: Codable, Identifiable, Equatable, Hashable{
  
     enum CodingKeys: CodingKey{
         case name
@@ -47,4 +47,7 @@ struct Product: Codable, Identifiable, Equatable {
     let deliveryTime: String
     let mrp: String
     let title: String
+    
+//    var isExpanded: Bool = false
+//    var quantity: Int = 0
 }

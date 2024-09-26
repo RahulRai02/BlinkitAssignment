@@ -10,20 +10,10 @@ import SwiftUI
 struct CategoryItem: View {
     var category: Category
     
+    
     var body: some View {
         VStack(spacing: 2) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.lightGrey)
-                    .frame(width: 70, height: 70)
-                    
-                Image(category.image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 55, height: 55)
-                    .clipped()
-
-            }
+            RectangleImageCell(categoryOrProductImage: category.image)
             Text(category.name)
                 .font(.system(size: 12).weight(.semibold))
 //                .lineLimit(2)
@@ -43,27 +33,28 @@ let columns = [
 ]
 
 struct CategorySection: View {
-    var headerTitle: String
+    var navTitle: String
     var categories: [Category] // Use the Category model
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(headerTitle)
+            Text(navTitle)
                 .font(.headline)
                 .fontWeight(.bold)
                 .padding(.leading, 16)
             
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(categories) { category in
-//                    CategoryItem(category: category)
                     CustomNavLink {
-                        SubProductView()
+                        SubProductView(navTitle: category.name)
                     } label: {
                         CategoryItem(category: category)
                     }
 
 
                 }
+                
+                
             }
             .padding(.horizontal)
         }
@@ -71,25 +62,33 @@ struct CategorySection: View {
 }
 struct GroceryView: View {
     @StateObject var viewModel = GroceryViewModel()
-
+    @State private var isFirstTimeAppearance = false
     
     var body: some View {
         ScrollView{
             VStack(spacing: 5) {
-                ForEach(viewModel.categories){ category in
-                    CategorySection(headerTitle: category.name, categories: viewModel.categories)
-                }
-
-//
-//            
+                    ForEach(viewModel.categories){ category in
+                        CategorySection(navTitle: "Sauces & Spreads", categories: viewModel.categories)
+                    }
+//                
+//                CategorySection(navTitle: "Snacks & Drinks", categories: [Category(name: "Tomato Ketchup", image: "ketchup", products: []),
+//                                                                         Category(name: "Asian Sauces", image: "asianSauceRealThaiCurry", products: []),
+//                                                                         Category(name: "Mayonnaise", image: "mayoOethkar", products: [])])
                 }
             .padding(.top, 16)
             .onAppear{
-                viewModel.fetchCategoriesAndProducts()
+                if !isFirstTimeAppearance{
+                    viewModel.fetchCategoriesAndProducts()
+                    isFirstTimeAppearance = true
+
+                }
+                
             }
             .padding(.top, 16)
         }
     }
+
+
 }
 
 //#Preview {

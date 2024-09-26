@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NavigationBar: View {
+    let navTitle: String
+    
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack(spacing:8){
@@ -19,7 +21,7 @@ struct NavigationBar: View {
                         Image(systemName: "arrow.backward")
                             .font(.system(size: 18).weight(.bold))
                             .foregroundColor(Color.black)
-                        Text("Sauces & Spreads")
+                        Text(navTitle)
                             .font(.system(size:18).weight(.bold))
                             .foregroundColor(Color.black)
                     }
@@ -44,5 +46,5 @@ struct NavigationBar: View {
 }
 
 #Preview {
-    NavigationBar()
+    NavigationBar(navTitle: "Sauces & Spreads")
 }

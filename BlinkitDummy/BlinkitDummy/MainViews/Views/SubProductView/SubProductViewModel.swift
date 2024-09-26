@@ -12,6 +12,7 @@ class SubProductViewModel: ObservableObject{
     @Published var selectedCategory: Category?
     @Published var previousCategoryIndex: Int? = 0
     @Published var nextCategoryIndex: Int? = 1
+//    @Published var products
     
     var onReachedTopCategory: (() -> Void)?
     var onReachedBottomCategory: (() -> Void)?
@@ -31,11 +32,12 @@ class SubProductViewModel: ObservableObject{
             
             // Assign the categories array to the @Published property
             self.categories = categoryProducts.categories
-            
+                        
         } catch {
             print("Failed to decode JSON: \(error.localizedDescription)")
         }
     }
+    
     
     func updateIndices() {
         guard let selectedCategoryId = selectedCategory?.id else { return }
@@ -55,9 +57,7 @@ class SubProductViewModel: ObservableObject{
               
 //                print("Reached the bottom category")
             }
-//            
-//            previousCategoryIndex = max(0, currentIndex - 1)
-//            nextCategoryIndex = min(categories.count - 1, currentIndex + 1)
+
         }
     }
     

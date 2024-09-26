@@ -10,7 +10,9 @@ import SwiftUI
 @main
 struct BlinkitDummyApp: App {
 //    @StateObject var viewModel = SubProductViewModel()
-    var order =  Order()
+//    var order =  Order()
+    @StateObject private var order = Order()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

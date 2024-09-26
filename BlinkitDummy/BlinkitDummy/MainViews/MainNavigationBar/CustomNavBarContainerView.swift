@@ -13,7 +13,7 @@ struct CustomNavBarContainerView<Content: View> : View {
     
     @State private var showBackButton: Bool = true
     @State private var title: String = ""
-    @State private var minutes: String = "NA"
+    @State private var minutes: String = ""
     @State private var address: String = ""
     @State private var isSurgeApplicable: Bool = false
     
