@@ -111,7 +111,6 @@
 				B7202ED82C9F3A2800B4C490 /* CustomNavBarContainerView.swift */,
 				B7202EDA2C9F3A3B00B4C490 /* CustomNavLink.swift */,
 				B7202EDC2C9F3A5400B4C490 /* CustomNavBarPreferenceKey.swift */,
-				B7202F0B2CA5B49100B4C490 /* CustomTabBar */,
 			);
 			path = MainNavigationBar;
 			sourceTree = "<group>";
@@ -222,6 +221,7 @@
 			children = (
 				B79916BE2C63CE5C00E5A5FF /* BlinkitDummyApp.swift */,
 				B79916C02C63CE5C00E5A5FF /* ContentView.swift */,
+				B7202F0B2CA5B49100B4C490 /* CustomTabBar */,
 				B7202ED32C9F398600B4C490 /* MainNavigationBar */,
 				B763F2F22C68317E002C68C4 /* NavBar */,
 				B79916CF2C63E57300E5A5FF /* Views */,

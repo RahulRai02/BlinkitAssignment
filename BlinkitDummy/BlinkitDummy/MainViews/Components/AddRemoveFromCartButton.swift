@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddRemoveFromCartButton: View {
     @EnvironmentObject var order : Order
-    var product: Product
+    let product: Product
     
     var body: some View {
         HStack {
@@ -19,13 +19,14 @@ struct AddRemoveFromCartButton: View {
                         Button(action: {
                             if order.getProductQuantity(product: product) > 0 {
                                 order.removeProduct(product: product)
-                                print(order.items)
+//                                print(order.items)
                             }
                         }) {
                             Image(systemName: "minus")
                                 .foregroundColor(.white)
                                 .frame(width: 15, height: 15)  // Adjusted size for smaller button
                                 .contentShape(Rectangle())
+//                                .background(Color.red)
                         }
 
                         // Quantity Display
@@ -37,12 +38,13 @@ struct AddRemoveFromCartButton: View {
                         // Plus Button
                         Button(action: {
                             order.addProduct(product: product)
-                            print(order.items)
+//                            print(order.items)
                         }) {
                             Image(systemName: "plus")
                                 .foregroundColor(.white)
                                 .frame(width: 15, height: 15)
                                 .contentShape(Rectangle())
+//                                .background(Color.red)
                         }
                     }
                     .frame(width: 70, height: 20)
@@ -53,7 +55,7 @@ struct AddRemoveFromCartButton: View {
                 Button(action: {
                     withAnimation(.easeInOut) {
                         order.addProduct(product: product)
-                        print(order.items)
+//                        print(order.items)
                     }
                 }) {
                     customButton(width: 60, height: 20) {

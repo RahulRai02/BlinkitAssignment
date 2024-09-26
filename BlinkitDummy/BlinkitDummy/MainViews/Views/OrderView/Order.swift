@@ -16,14 +16,18 @@ final class Order: ObservableObject {
     // Add product to the cart and update its quantity and expanded state
     func addProduct(product: Product) {
         print("Trying to Adddddddd")
+        print(product)
         // Check if the product is already in the cart
         if quantities[product] != nil {
+            
+            print("product already present in cart")
             // Product is already in cart, increase quantity
             quantities[product]! += 1
         } else {
             // Product is not present in the cart, add it and set expanded state to true
+            print("product not present in cart")
             items.append(product)  // Add to the cart
-            quantities[product] = 1  // Initialize quantity to 1
+            quantities[product] = 1
             expandedStates[product] = true  // Set expanded state to true
         }
     }
@@ -31,17 +35,22 @@ final class Order: ObservableObject {
     // Remove product from the cart and update its state
     func removeProduct(product: Product) {
         print("Trying to removeeeeeee")
+        print(product)
         // Check if the product is in the cart
         if let currentQuantity = quantities[product], currentQuantity > 0 {
+            print("product already present in cart")
             // Decrease the quantity
             quantities[product]! -= 1
             
             // If quantity becomes zero, collapse the button and remove the product
             if quantities[product]! == 0 {
-                expandedStates[product] = false  // Collapse the button
+                quantities.removeValue(forKey: product)  // Remove from quantities dictionary
+                expandedStates.removeValue(forKey: product)  // Remove from expandedStates dictionary
+
                 if let index = items.firstIndex(of: product) {
                     items.remove(at: index)  // Remove product from the cart
                 }
+
             }
         }
     }

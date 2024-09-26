@@ -9,6 +9,7 @@ import SwiftUI
 
 struct orderItemCell: View {
     let product: Product
+//    @EnvironmentObject var order: Order
    
     var body: some View {
         HStack{
@@ -20,22 +21,18 @@ struct orderItemCell: View {
                     .minimumScaleFactor(0.8)
                 Text("\(product.weight)")
                     .font(.system(size: 10).weight(.light))
-                Button{
-                    print("Tapped")
-                }label: {
-                    Text("Save for later")
-                        .font(.system(size: 11).weight(.light)).underline()
-                        .foregroundStyle(Color.black)
-                }
+
             }
             Spacer()
             VStack{
                 Text("₹ \(product.mrp)")
                     .font(.system(size: 15).weight(.semibold))
                 Spacer()
+                AddRemoveFromCartButton(product: product)
             }
-            
+
         }
+
         .frame(maxWidth: .infinity, maxHeight: 40)
         .padding()
     }

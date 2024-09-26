@@ -10,29 +10,39 @@ struct OrderView: View {
     @EnvironmentObject var order: Order
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundStyle(.lightGrey.gradient.opacity(0.8))
-                .ignoresSafeArea()
+//        ZStack {
+//            Rectangle()
+//                .foregroundStyle(.lightGrey.gradient.opacity(0.8))
+//                .ignoresSafeArea()
             VStack{
                 GroupBox {
-                    List{
-                        VStack{
-                            ForEach(order.items){ product in
-                                orderItemCell(product: product)
-                                    .overlay(AddRemoveFromCartButton(product: product), alignment: .bottomTrailing)
-                                    
-                            }
-                        }
-                        .listRowInsets(EdgeInsets())
-                    }
-                    .listStyle(PlainListStyle())
-                    .frame(height: CGFloat(order.items.count) * CGFloat(80))
-                    
+                        ScrollView{
+                            if order.items.isEmpty {
+                                // Display an image when the cart is empty
+                                VStack {
+                                    Image(systemName: "cart")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                        .foregroundColor(.gray)
+                                    Text("Your cart is empty")
+                                        .font(.title3)
+                                        .foregroundColor(.gray)
+                                }
+                                .frame(maxWidth: .infinity)
+                            } else {
+                                // Display the cart items when there are items in the cart
+                                VStack {
+                                    ForEach(order.items) { product in
+                                        orderItemCell(product: product)
+                                    }
+                                }
+                            }                        }
                 } label: {
                     Label("Delivery in 12 mins", systemImage: "clock")
                 }
             .groupBoxStyle(.orderStyle)
+//            .frame(maxWidth: .infinity)
             .padding()
                 Spacer()
                 GroupBox {
@@ -76,7 +86,7 @@ struct OrderView: View {
                 }
             }
 
-        }
+//        }
         
     }
 }
