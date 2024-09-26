@@ -50,7 +50,7 @@ struct MainNavigationBar: View {
                 NavigationLink{
                     AccountScreen()
                 }label:{
-                    Image(systemName: "person.circle.fill")
+                    Image(systemName: "person.circle")
                         .resizable()
                         .frame(width: 40, height: 40)
                 }
@@ -60,7 +60,14 @@ struct MainNavigationBar: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.lightGrey)
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.pink.opacity(0.3), Color.yellow.opacity(0.3)]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+
             .sheet(isPresented: $showLocationSheet, content: {
                 LocationBottomSheet()
             })

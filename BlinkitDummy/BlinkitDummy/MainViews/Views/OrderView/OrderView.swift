@@ -19,7 +19,8 @@ struct OrderView: View {
                         ScrollView{
                             if order.items.isEmpty {
                                 // Display an image when the cart is empty
-                                VStack {
+                                
+                                VStack(alignment:.center){
                                     Image(systemName: "cart")
                                         .resizable()
                                         .scaledToFit()
@@ -29,7 +30,8 @@ struct OrderView: View {
                                         .font(.title3)
                                         .foregroundColor(.gray)
                                 }
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                               
                             } else {
                                 // Display the cart items when there are items in the cart
                                 VStack {
@@ -44,6 +46,7 @@ struct OrderView: View {
             .groupBoxStyle(.orderStyle)
 //            .frame(maxWidth: .infinity)
             .padding()
+                
                 Spacer()
                 GroupBox {
                     HStack{
