@@ -28,6 +28,8 @@
 		B7202F112CA5B51A00B4C490 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202F102CA5B51A00B4C490 /* CustomTabBarContainerView.swift */; };
 		B7202F132CA5B54600B4C490 /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202F122CA5B54500B4C490 /* TabBarItemsPreferenceKey.swift */; };
 		B7202F152CA5B56600B4C490 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7202F142CA5B56600B4C490 /* TabBarItem.swift */; };
+		B740B1642CA7276D0077C7E9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B1632CA7276D0077C7E9 /* LocationManager.swift */; };
+		B740B1672CA72A330077C7E9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B1662CA72A330077C7E9 /* MapView.swift */; };
 		B763F2E22C67C901002C68C4 /* SubProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */; };
 		B763F2E42C67F514002C68C4 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B763F2E32C67F514002C68C4 /* mockJson.json */; };
 		B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E52C67F785002C68C4 /* CategoryProducts.swift */; };
@@ -70,6 +72,8 @@
 		B7202F102CA5B51A00B4C490 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
 		B7202F122CA5B54500B4C490 /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
 		B7202F142CA5B56600B4C490 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		B740B1632CA7276D0077C7E9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B740B1662CA72A330077C7E9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B763F2E02C67BB8E002C68C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubProductViewModel.swift; sourceTree = "<group>"; };
 		B763F2E32C67F514002C68C4 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
@@ -143,6 +147,22 @@
 				B7202F142CA5B56600B4C490 /* TabBarItem.swift */,
 			);
 			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		B740B1622CA727440077C7E9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B740B1632CA7276D0077C7E9 /* LocationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		B740B1652CA72A1E0077C7E9 /* LocationView */ = {
+			isa = PBXGroup;
+			children = (
+				B740B1662CA72A330077C7E9 /* MapView.swift */,
+			);
+			path = LocationView;
 			sourceTree = "<group>";
 		};
 		B763F2E92C680C44002C68C4 /* SubProductView */ = {
@@ -251,6 +271,8 @@
 		B79916CF2C63E57300E5A5FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B740B1652CA72A1E0077C7E9 /* LocationView */,
+				B740B1622CA727440077C7E9 /* Manager */,
 				B7202EE92CA02A4600B4C490 /* OrderView */,
 				B7202EE62C9F53C900B4C490 /* GroceryView */,
 				B763F2E92C680C44002C68C4 /* SubProductView */,
@@ -364,6 +386,7 @@
 				B7202ED72C9F3A0400B4C490 /* CustomNavView.swift in Sources */,
 				B7202F112CA5B51A00B4C490 /* CustomTabBarContainerView.swift in Sources */,
 				B7202F132CA5B54600B4C490 /* TabBarItemsPreferenceKey.swift in Sources */,
+				B740B1672CA72A330077C7E9 /* MapView.swift in Sources */,
 				B7202EEF2CA02B1500B4C490 /* Order.swift in Sources */,
 				B79916DC2C64DD5700E5A5FF /* customButton.swift in Sources */,
 				B7202F0A2CA4530F00B4C490 /* AddRemoveFromCartButton.swift in Sources */,
@@ -385,6 +408,7 @@
 				B7202EDF2C9F3AC500B4C490 /* AccountScreen.swift in Sources */,
 				B763F2F82C68A183002C68C4 /* ProductGridView.swift in Sources */,
 				B79916E22C66049000E5A5FF /* CustomScrollView.swift in Sources */,
+				B740B1642CA7276D0077C7E9 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -501,6 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
@@ -524,6 +550,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlinkitDummy/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -555,6 +582,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlinkitDummy/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

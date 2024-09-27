@@ -16,6 +16,7 @@ struct ContentView: View {
         CustomTabBarContainerView(selection: $tabSelection) {
             CustomNavView {
                 ZStack{
+                    Color.white
                     GroceryView()
                 }
                 .customNavBarItems(title: "Blinkit in", minutes: "9", address: "136 Sector - 28, Faridabad", backButtonHidden: false, isSurgeApplicable: true)
@@ -32,8 +33,8 @@ struct ContentView: View {
                 .tabBarItem(tab: .profile,
                             selection: $tabSelection)
         }
-        .tint(.green)
-        .background(Color.lightGrey)
+//        .tint(.green)
+//        .background(Color.lightGrey)
     }
 }
 

@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-
-import SwiftUI
-
 final class AccountViewModel: ObservableObject{
     @Published var firstName = ""
     @Published var lastName = ""
@@ -30,6 +27,7 @@ struct AccountScreen: View {
     
     var body: some View {
         NavigationView{
+            
             Form{
                 Section {
                     TextField("First Name", text: $viewModel.firstName)
@@ -66,8 +64,10 @@ struct AccountScreen: View {
                 .toggleStyle(SwitchToggleStyle(tint: .green))
                 
             }
+//            .background(Color.brandPrimary.opacity(0.1))
             .navigationTitle("My Account")
         }
+        
 //        .onAppear{
 //            viewModel.retriveUser()
 //        }
@@ -77,6 +77,7 @@ struct AccountScreen: View {
 //                  dismissButton: alertItem.dismissButton)
 //        }
     }
+    
 }
 
 #Preview {

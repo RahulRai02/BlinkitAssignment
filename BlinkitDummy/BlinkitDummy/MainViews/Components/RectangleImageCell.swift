@@ -13,7 +13,7 @@ struct RectangleImageCell: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
-                .fill(Color.lightGrey)
+                .fill(Color.gray.opacity(0.1))
                 .frame(width: 70, height: 70)
                 
             Image(categoryOrProductImage)

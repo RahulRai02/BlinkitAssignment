@@ -63,6 +63,7 @@ struct CategorySection: View {
 struct GroceryView: View {
     @StateObject var viewModel = GroceryViewModel()
     @State private var isFirstTimeAppearance = false
+    @StateObject private var locationManager = LocationManager()
     
     var body: some View {
         ScrollView{
@@ -85,6 +86,11 @@ struct GroceryView: View {
                 
             }
             .padding(.top, 16)
+            
+           
+
+            
+         
         }
     }
 

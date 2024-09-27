@@ -10,36 +10,36 @@ struct OrderView: View {
     @EnvironmentObject var order: Order
     
     var body: some View {
-//        ZStack {
-//            Rectangle()
-//                .foregroundStyle(.lightGrey.gradient.opacity(0.8))
-//                .ignoresSafeArea()
+        ZStack {
+            Rectangle()
+                .foregroundStyle(Color.brandPrimary.opacity(0.1))
+                .ignoresSafeArea()
             VStack{
                 GroupBox {
-                        ScrollView{
-                            if order.items.isEmpty {
-                                // Display an image when the cart is empty
-                                
-                                VStack(alignment:.center){
-                                    Image(systemName: "cart")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 100, height: 100)
-                                        .foregroundColor(.gray)
-                                    Text("Your cart is empty")
-                                        .font(.title3)
-                                        .foregroundColor(.gray)
+                    ScrollView{
+                        if order.items.isEmpty {
+                            // Display an image when the cart is empty
+                            VStack(alignment:.center){
+                                Image(systemName: "cart")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .foregroundColor(.gray)
+                                Text("Your cart is empty")
+                                    .font(.title3)
+                                    .foregroundColor(.gray)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            
+                        } else {
+                            // Display the cart items when there are items in the cart
+                            VStack {
+                                ForEach(order.items) { product in
+                                    orderItemCell(product: product)
                                 }
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                               
-                            } else {
-                                // Display the cart items when there are items in the cart
-                                VStack {
-                                    ForEach(order.items) { product in
-                                        orderItemCell(product: product)
-                                    }
-                                }
-                            }                        }
+                            }
+                        }
+                    }
                 } label: {
                     Label("Delivery in 12 mins", systemImage: "clock")
                 }
@@ -89,7 +89,7 @@ struct OrderView: View {
                 }
             }
 
-//        }
+        }
         
     }
 }

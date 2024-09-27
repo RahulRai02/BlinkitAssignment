@@ -10,13 +10,25 @@ import SwiftUI
 
 struct MainNavigationBar: View {
 //    @State var isSurgeApplicable: Bool = true;
-    @State var showLocationSheet: Bool = false;
+    
+    @State var showLocationSheet: Bool = false
+    @State var address: String = ""
+    @State var addressTag: String = "Not available, Click to change location"
+    @State var houseNumber: String = ""
+    
+    
+
     let showBackButton: Bool
     let title: String
     let Minutes: String
-    let address: String
-    let addressTag: String = "Others"
     let isSurgeApplicable: Bool
+//    @State var showLocationSheet: Bool = false;
+//    let showBackButton: Bool
+//    let title: String
+//    let Minutes: String
+//    let address: String
+//    let addressTag: String = "Others"
+//    let isSurgeApplicable: Bool
 //    let showLocationSheet: Bool
     
     
@@ -38,7 +50,9 @@ struct MainNavigationBar: View {
                         showLocationSheet.toggle()
                     }label:{
 //                        Text("Home - 1353 Sector 28, Faridabad")"
-                        Text("\(addressTag) - \(address)")
+                        Text("\(addressTag) - \(houseNumber), \(address)")
+                            .font(.caption.weight(.medium))
+                            .lineLimit(1)
                         
                         Image(systemName: "arrowtriangle.down.fill")
                     }
@@ -67,13 +81,15 @@ struct MainNavigationBar: View {
                     endPoint: .bottom
                 )
             )
-
             .sheet(isPresented: $showLocationSheet, content: {
-                LocationBottomSheet()
+                LocationBottomSheet(address: $address, addressTag: $addressTag, houseNumber: $houseNumber)
             })
+//            .onPreferenceChange(AddressPreferenceKey.self) { newAddress in
+//                self.address = newAddress
+//            }
     }
 }
 
-#Preview {
-    MainNavigationBar(showBackButton: false, title: "Blinkit in", Minutes: "20", address: "1353 Sector 28, Faridabad", isSurgeApplicable: false)
-}
+//#Preview {
+//    MainNavigationBar(showBackButton: false, title: "Blinkit in", Minutes: "20", address: "1353 Sector 28, Faridabad", isSurgeApplicable: false)
+//}

@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class Order: ObservableObject {
     @Published var items: [Product] = []  // List of products in the cart
     @Published var quantities: [Product: Int] = [:]  // Stores quantity for each product
     @Published var expandedStates: [Product: Bool] = [:]  // Stores whether the button is expanded for each product
 
+    @Published var saveToLaterItems: [Product] = []
     
     // Add product to the cart and update its quantity and expanded state
     func addProduct(product: Product) {
@@ -48,7 +50,10 @@ final class Order: ObservableObject {
                 expandedStates.removeValue(forKey: product)  // Remove from expandedStates dictionary
 
                 if let index = items.firstIndex(of: product) {
-                    items.remove(at: index)  // Remove product from the cart
+                    withAnimation(.easeInOut){
+                        items.remove(at: index)  // Remove product from the cart
+                    }
+                   
                 }
 
             }

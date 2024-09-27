@@ -24,7 +24,7 @@ struct CustomNavBarContainerView<Content: View> : View {
     
     var body: some View {
         VStack(spacing: 0){
-           MainNavigationBar(showBackButton: showBackButton, title: title, Minutes: minutes, address: address, isSurgeApplicable: true)
+           MainNavigationBar(showBackButton: showBackButton, title: title, Minutes: minutes, isSurgeApplicable: true)
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -35,9 +35,9 @@ struct CustomNavBarContainerView<Content: View> : View {
         .onPreferenceChange(CustomNavBarMinutesPreferenceKey.self, perform: { value in
             self.minutes = value
         })
-        .onPreferenceChange(CustomNavBarAddressPreferenceKey.self, perform: { value in
-            self.address = value
-        })
+//        .onPreferenceChange(CustomNavBarAddressPreferenceKey.self, perform: { value in
+//            self.address = value
+//        })
         .onPreferenceChange(CustomNavBarBackButtonHiddenPreferenceKey.self, perform: { value in
             self.showBackButton = !value
         })

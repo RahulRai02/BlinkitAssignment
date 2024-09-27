@@ -33,13 +33,13 @@ struct CustomNavBarMinutesPreferenceKey: PreferenceKey {
     }
 }
 
-struct CustomNavBarAddressPreferenceKey: PreferenceKey {
-    static var defaultValue: String = ""
-    
-    static func reduce(value: inout String, nextValue: () -> String) {
-        value = nextValue()
-    }
-}
+//struct CustomNavBarAddressPreferenceKey: PreferenceKey {
+//    static var defaultValue: String = ""
+//    
+//    static func reduce(value: inout String, nextValue: () -> String) {
+//        value = nextValue()
+//    }
+//}
 
 struct CustomNavBarSurgePreferenceKey: PreferenceKey {
     static var defaultValue: Bool = false
@@ -66,10 +66,10 @@ extension View {
             .preference(key: CustomNavBarMinutesPreferenceKey.self, value: minutes)
     }
     
-    func customNavigationAddress(_ address: String) -> some View {
-        self
-            .preference(key: CustomNavBarAddressPreferenceKey.self, value: address)
-    }
+//    func customNavigationAddress(_ address: String) -> some View {
+//        self
+//            .preference(key: CustomNavBarAddressPreferenceKey.self, value: address)
+//    }
 
     func customNavigationSurge(_ isSurgeApplicable: Bool) -> some View {
         self
@@ -80,7 +80,7 @@ extension View {
         self
             .customNavigationTitle(title)
             .customNavigationMinutes(minutes)
-            .customNavigationAddress(address)
+//            .customNavigationAddress(address)
             .customNavigationBarBackButtonHidden(backButtonHidden)
             .customNavigationSurge(isSurgeApplicable)
     }
