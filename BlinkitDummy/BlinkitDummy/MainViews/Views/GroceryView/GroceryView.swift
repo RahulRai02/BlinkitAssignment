@@ -66,32 +66,32 @@ struct GroceryView: View {
     @StateObject private var locationManager = LocationManager()
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 5) {
-                    ForEach(viewModel.categories){ category in
-                        CategorySection(navTitle: "Sauces & Spreads", categories: viewModel.categories)
+        VStack{
+            automaticImageSlider()
+                .padding(.top, 5)
+            ScrollView{
+                VStack(spacing: 5) {
+                        ForEach(viewModel.categories){ category in
+                            CategorySection(navTitle: "Sauces & Spreads", categories: viewModel.categories)
+                        }
+    //
+    //                CategorySection(navTitle: "Snacks & Drinks", categories: [Category(name: "Tomato Ketchup", image: "ketchup", products: []),
+    //                                                                         Category(name: "Asian Sauces", image: "asianSauceRealThaiCurry", products: []),
+    //                                                                         Category(name: "Mayonnaise", image: "mayoOethkar", products: [])])
                     }
-//                
-//                CategorySection(navTitle: "Snacks & Drinks", categories: [Category(name: "Tomato Ketchup", image: "ketchup", products: []),
-//                                                                         Category(name: "Asian Sauces", image: "asianSauceRealThaiCurry", products: []),
-//                                                                         Category(name: "Mayonnaise", image: "mayoOethkar", products: [])])
-                }
-            .padding(.top, 16)
-            .onAppear{
-                if !isFirstTimeAppearance{
-                    viewModel.fetchCategoriesAndProducts()
-                    isFirstTimeAppearance = true
+                .padding(.top, 16)
+                .onAppear{
+                    if !isFirstTimeAppearance{
+                        viewModel.fetchCategoriesAndProducts()
+                        isFirstTimeAppearance = true
 
+                    }
+                    
                 }
-                
+                .padding(.top, 16)
             }
-            .padding(.top, 16)
-            
-           
-
-            
-         
         }
+
     }
 
 
