@@ -13,6 +13,10 @@ final class AccountViewModel: ObservableObject{
     @AppStorage("user") private var userData: Data?
     @Published var user = User()
     
+    @AppStorage("address") private var addressData: Data?
+//    @Published var address = Address()
+    @Published var addresses: [Address] = []
+    
     // Alert Item
     @Published var alertItem: AlertItem?
 
@@ -42,6 +46,34 @@ final class AccountViewModel: ObservableObject{
         }
     }
     
+    func saveAddress(){
+        guard isValidForm else {
+            return
+        }
+//        addresses.append(newAddress)
+        
+        do{
+            let data = try JSONEncoder().encode(addresses)
+            addressData = data
+            alertItem = AlertContext.addressSaveSuccess
+        }catch{
+            alertItem = AlertContext.invalidAddressData
+        }
+        
+        print("Address array is: \(addresses)")
+    }
+    
+    func retrieveAddress(){
+        guard let addressData = addressData else {
+            return
+        }
+        do{
+            addresses = try JSONDecoder().decode([Address].self, from: addressData)
+        }catch{
+            alertItem = AlertContext.invalidAddressData
+        }
+    }
+    
     
     var isValidForm: Bool {
         guard !user.firstName.isEmpty && !user.lastName.isEmpty && !user.email.isEmpty else{
@@ -58,7 +90,15 @@ final class AccountViewModel: ObservableObject{
         return true
     }
     
-    
+    func addAddress(_ address: Address) {
+        addresses.append(address)
+        saveAddress()
+    }
+
+    func deleteAddress(at offsets: IndexSet) {
+        addresses.remove(atOffsets: offsets)
+        saveAddress()
+    }
 
     
 }

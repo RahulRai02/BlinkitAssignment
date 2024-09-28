@@ -35,6 +35,7 @@
 		B740B16E2CA89E110077C7E9 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B16D2CA89E100077C7E9 /* Alert.swift */; };
 		B740B1712CA89F150077C7E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B1702CA89F150077C7E9 /* User.swift */; };
 		B740B1732CA89F3F0077C7E9 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B1722CA89F3F0077C7E9 /* AccountViewModel.swift */; };
+		B740B1752CA8A3810077C7E9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B740B1742CA8A3810077C7E9 /* Address.swift */; };
 		B763F2E22C67C901002C68C4 /* SubProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */; };
 		B763F2E42C67F514002C68C4 /* mockJson.json in Resources */ = {isa = PBXBuildFile; fileRef = B763F2E32C67F514002C68C4 /* mockJson.json */; };
 		B763F2E62C67F785002C68C4 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B763F2E52C67F785002C68C4 /* CategoryProducts.swift */; };
@@ -84,6 +85,7 @@
 		B740B16D2CA89E100077C7E9 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B740B1702CA89F150077C7E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = BlinkitDummy/Utils/User.swift; sourceTree = SOURCE_ROOT; };
 		B740B1722CA89F3F0077C7E9 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		B740B1742CA8A3810077C7E9 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Address.swift; path = BlinkitDummy/MainViews/Views/AccountScreen/Address.swift; sourceTree = SOURCE_ROOT; };
 		B763F2E02C67BB8E002C68C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B763F2E12C67C900002C68C4 /* SubProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubProductViewModel.swift; sourceTree = "<group>"; };
 		B763F2E32C67F514002C68C4 /* mockJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockJson.json; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				B763F2E52C67F785002C68C4 /* CategoryProducts.swift */,
 				B740B1702CA89F150077C7E9 /* User.swift */,
+				B740B1742CA8A3810077C7E9 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				B7202EDF2C9F3AC500B4C490 /* AccountScreen.swift in Sources */,
 				B763F2F82C68A183002C68C4 /* ProductGridView.swift in Sources */,
 				B79916E22C66049000E5A5FF /* CustomScrollView.swift in Sources */,
+				B740B1752CA8A3810077C7E9 /* Address.swift in Sources */,
 				B740B1642CA7276D0077C7E9 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

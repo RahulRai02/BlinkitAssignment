@@ -24,6 +24,8 @@ import SwiftUI
 struct AccountScreen: View {
     
     @StateObject var viewModel = AccountViewModel()
+    @State private var newAddress = Address() // Temporary address for form input
+
     
     var body: some View {
         NavigationView{
@@ -49,7 +51,28 @@ struct AccountScreen: View {
                 } header: {
                     Text("Personal Info")
                 }
-                
+
+                    
+                    // Add new address
+                    Section{
+                        TextField("House Number", text: $newAddress.houseNumner)
+                        TextField("Address", text: $newAddress.address)
+                        TextField("Sector", text: $newAddress.sector)
+                        TextField("Pincode", text: $newAddress.pincode)
+                        TextField("City", text: $newAddress.city)
+                        TextField("State", text: $newAddress.state)
+                        
+                        Button(action: {
+                            viewModel.addAddress(newAddress)
+                            newAddress = Address() // Reset the input fields
+                        }) {
+                            Text("Add Address")
+                        }
+                    }header: {
+                        Text("ADD YOUR ADDRESS")
+                    }
+
+     
                 Section{
                     Toggle(isOn: $viewModel.user.extraNapkins) {
                         Text("Extra Napkins")

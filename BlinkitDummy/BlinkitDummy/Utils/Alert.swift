@@ -32,10 +32,18 @@ struct AlertContext {
                                             message: Text("Your profile information was successfully saved"),
                                             dismissButton: .default(Text("OK")))
     
+    static let addressSaveSuccess     = AlertItem(title: Text("Address Saved"), message: Text("Your address was saved successfully"), dismissButton: .default(Text("OK")))
+    
     // MARK: -- Invalid User Data during Encoding encountered
     static let invalidUserData        = AlertItem(title: Text("Profile Error"),
                                             message: Text("There was an error saving or retrieving your profile."),
                                             dismissButton: .default(Text("OK")))
+    
+    static let invalidAddressData        = AlertItem(title: Text("Address Error"),
+                                            message: Text("There was an error saving or retrieving your address."),
+                                            dismissButton: .default(Text("OK")))
+    
+    // MARK: -- 
     
     
 }
