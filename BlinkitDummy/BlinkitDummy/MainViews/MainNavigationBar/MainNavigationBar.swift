@@ -56,8 +56,6 @@ struct MainNavigationBar: View {
                                 
                                 .font(.caption.weight(.medium))
                                 .lineLimit(1)
-                                
-                            
                             Image(systemName: "arrowtriangle.down.fill")
                         }
                     }

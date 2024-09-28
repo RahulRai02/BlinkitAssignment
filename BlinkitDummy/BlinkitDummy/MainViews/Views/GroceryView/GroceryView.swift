@@ -67,9 +67,10 @@ struct GroceryView: View {
     
     var body: some View {
         VStack{
+            ScrollView{
             automaticImageSlider()
                 .padding(.top, 5)
-            ScrollView{
+            
                 VStack(spacing: 5) {
                         ForEach(viewModel.categories){ category in
                             CategorySection(navTitle: "Sauces & Spreads", categories: viewModel.categories)
