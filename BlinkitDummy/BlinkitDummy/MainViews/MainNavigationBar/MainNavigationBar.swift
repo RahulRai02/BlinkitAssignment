@@ -12,8 +12,8 @@ struct MainNavigationBar: View {
 //    @State var isSurgeApplicable: Bool = true;
     
     @State var showLocationSheet: Bool = false
-    @State var address: String = ""
-    @State var addressTag: String = "Not available, Click to change location"
+    @State var address: String = "Not Available"
+    @State var addressTag: String = "Home"
     @State var houseNumber: String = ""
     
     
@@ -34,11 +34,11 @@ struct MainNavigationBar: View {
     
     var body: some View {
             HStack{
-                VStack(alignment:.leading){
+                VStack(alignment:.leading, spacing: 0){
 //                    Text("Blinkit in")
                     Text(title)
                         .font(.caption)
-                        .fontWeight(.semibold)
+                        .fontWeight(.bold)
                     HStack{
 //                        Text("20 minutes")
                         Text("\(Minutes) minutes")
@@ -49,12 +49,17 @@ struct MainNavigationBar: View {
                     Button{
                         showLocationSheet.toggle()
                     }label:{
-//                        Text("Home - 1353 Sector 28, Faridabad")"
-                        Text("\(addressTag) - \(houseNumber), \(address)")
-                            .font(.caption.weight(.medium))
-                            .lineLimit(1)
-                        
-                        Image(systemName: "arrowtriangle.down.fill")
+                        HStack(spacing: 4) {
+                            Text("\(addressTag): ")
+                                .font(.caption.weight(.bold))  // Make the addressTag bold
+                            Text(" \(houseNumber) - \(address)")
+                                
+                                .font(.caption.weight(.medium))
+                                .lineLimit(1)
+                                
+                            
+                            Image(systemName: "arrowtriangle.down.fill")
+                        }
                     }
                     .font(.system(size: 14))
                     .foregroundStyle(Color.black)
@@ -76,17 +81,21 @@ struct MainNavigationBar: View {
             .padding()
             .background(
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.pink.opacity(0.3), Color.yellow.opacity(0.3)]),
-                    startPoint: .top,
-                    endPoint: .bottom
+                    gradient: Gradient(colors: [Color.blue.opacity(0.3), Color.purple.opacity(0.3)]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 )
             )
             .sheet(isPresented: $showLocationSheet, content: {
                 LocationBottomSheet(address: $address, addressTag: $addressTag, houseNumber: $houseNumber)
+                    .presentationBackground(.thinMaterial)
+//                    .presentationBackground(alignment: .bottom) {
+//                            LinearGradient(colors: [Color.pink, Color.purple], startPoint: .bottomLeading, endPoint: .topTrailing)
+//                    }
+                    .presentationDetents([.fraction(0.9)])
+                    .presentationDragIndicator(.visible)
             })
-//            .onPreferenceChange(AddressPreferenceKey.self) { newAddress in
-//                self.address = newAddress
-//            }
+
     }
 }
 

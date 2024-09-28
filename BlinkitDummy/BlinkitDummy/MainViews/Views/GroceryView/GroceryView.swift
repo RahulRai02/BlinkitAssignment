@@ -51,7 +51,7 @@ struct CategorySection: View {
                         CategoryItem(category: category)
                     }
 
-
+                    CategoryItem(category: category)
                 }
                 
                 

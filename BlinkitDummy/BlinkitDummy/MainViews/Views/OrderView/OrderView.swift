@@ -10,10 +10,6 @@ struct OrderView: View {
     @EnvironmentObject var order: Order
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundStyle(Color.brandPrimary.opacity(0.1))
-                .ignoresSafeArea()
             VStack{
                 GroupBox {
                     ScrollView{
@@ -88,8 +84,6 @@ struct OrderView: View {
                     }
                 }
             }
-
-        }
         
     }
 }
@@ -105,7 +99,7 @@ struct OrderViewGroupBoxStyle: GroupBoxStyle{
             configuration.content
         }
         .padding()
-        .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 12))
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
     }
 }
 

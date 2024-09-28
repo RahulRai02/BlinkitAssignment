@@ -14,12 +14,12 @@ struct RectangleImageCell: View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
                 .fill(Color.gray.opacity(0.1))
-                .frame(width: 70, height: 70)
+                .frame(width: 75, height: 75)
                 
             Image(categoryOrProductImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 55, height: 55)
+                .frame(width: 60, height: 60)
                 .clipped()
         }
     }

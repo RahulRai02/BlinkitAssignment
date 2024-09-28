@@ -39,8 +39,7 @@ struct CategoryListView: View {
             if !hasAppearedCategory{
                 viewModel.fetchCategoriesAndProducts()
                 hasAppearedCategory = true
-            }
-           
+            }     
         }
         .frame(width: UIScreen.main.bounds.width * CategoryListView.leftPanelWidthRatio)    // 15 percent criteria
     }
