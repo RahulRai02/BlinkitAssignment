@@ -6,34 +6,10 @@
 //
 
 import SwiftUI
-//
-//final class AccountViewModel: ObservableObject{
-//    @Published var firstName = ""
-//    @Published var lastName = ""
-//    @Published var email = ""
-//    @Published var birthdate = Date()
-//    @Published var extraNapkins = false
-//    @Published var frequentRefills = false
-//    
-//    func saveChanges() {
-//        // Logic for saving changes goes here
-//        print("Changes saved")
-//    }
-//}
 
 struct AccountScreen: View {
     
     @StateObject var viewModel = AccountViewModel()
-//    @State private var newAddress = Address()  Temporary address for form input
-
-    @State var houseNumber: String = ""
-   @State var address: String = ""
-   @State var sector: String = ""
-   @State var pincode: String = ""
-   @State var city: String = ""
-   @State var state: String = ""
-    
-    @State var selectedEntity: AddressEntity? = nil
 
     var body: some View {
         NavigationView{
@@ -61,59 +37,33 @@ struct AccountScreen: View {
                 }
 
                     
-//                     Add new address
-                    Section{
-                        TextField("House Number", text: $houseNumber)
-                        TextField("Address", text: $address)
-                        TextField("Sector", text: $sector)
-                        TextField("Pincode", text: $pincode)
-                        TextField("City", text: $city)
-                        TextField("State", text: $state)
-                        
-                        HStack{
-                            Button(action: {
-                                // Ensure that all fields are non-empty before proceeding
-                                guard !houseNumber.isEmpty,
-                                      !address.isEmpty,
-                                      !sector.isEmpty,
-                                      !pincode.isEmpty,
-                                      !city.isEmpty,
-                                      !state.isEmpty else {
-                                    return
-                                }
-                                if let entity = selectedEntity {
-                                    // Editing existing address
-                                    entity.houseNumber = houseNumber
-                                    entity.address = address
-                                    entity.sector = sector
-                                    entity.pincode = pincode
-                                    entity.city = city
-                                    entity.state = state
-                                } else {
-                                    // Adding a new address
-                                    viewModel.addAddress(houseNumber: houseNumber, address: address, sector: sector, city: city, state: state, pincode: pincode)
-                                }
-                                viewModel.saveData()
-                                resetForm()
-                            }) {
-                                withAnimation(.easeInOut){
-                                    Text(selectedEntity == nil ? "Add Address" : "Update Address")
-                                }
-                                
+//              Add/ update address
+                Section {
+                    TextField("House Number", text: $viewModel.houseNumber)
+                    TextField("Address", text: $viewModel.address)
+                    TextField("Sector", text: $viewModel.sector)
+                    TextField("Pincode", text: $viewModel.pincode)
+                    TextField("City", text: $viewModel.city)
+                    TextField("State", text: $viewModel.state)
+                    
+                    HStack {
+                        Button {
+                            viewModel.addOrUpdateAddress()
+                        } label: {
+                            withAnimation(.easeInOut) {
+                                Text(viewModel.selectedEntity == nil ? "Add Address" : "Update Address")
                             }
-                            Spacer()
-                            Button {
-                                resetForm()
-                            } label: {
-                                Text("Clear address cells")
-                            }
-
                         }
-                        
-
-                    }header: {
-                        Text("ADD YOUR ADDRESS")
+                        Spacer()
+                        Button {
+                            viewModel.resetForm()
+                        } label: {
+                            Text("Clear address cells")
+                        }
                     }
+                        } header: {
+                            Text("Add/Update your address")
+                        }
 
      
                 Section{
@@ -128,30 +78,26 @@ struct AccountScreen: View {
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .green))
                
-                Section{
-                    List{
-                        ForEach(viewModel.savedEntities){entity in
-                            AddressCell(
-                                houseNumber: entity.houseNumber ?? "No house no.",
-                                address: entity.address ?? "No address found",
-                                sector: entity.sector ?? "No sector found",
-                                pincode: entity.pincode ?? "No pincode found",
-                                city: entity.city ?? "No city found",
-                                state: entity.state ?? "No state found"
-//                                onEdit: {
-//                                    loadAddressForEditing(entity: entity)
-//                                }
-                            )
-                            .onTapGesture {
-                                loadAddressForEditing(entity: entity)
-                            }
-//                                .listRowBackground(Color.clear)
-                        }
-                        .onDelete(perform: viewModel.deleteAddress)
-                    }
-                }header: {
-                    Text("My addresses")
-                }
+                Section {
+                     List {
+                         ForEach(viewModel.savedEntities) { entity in
+                             AddressCell(
+                                 houseNumber: entity.houseNumber ?? "No house no.",
+                                 address: entity.address ?? "No address found",
+                                 sector: entity.sector ?? "No sector found",
+                                 pincode: entity.pincode ?? "No pincode found",
+                                 city: entity.city ?? "No city found",
+                                 state: entity.state ?? "No state found"
+                             )
+                             .onTapGesture {
+                                 viewModel.loadAddressForEditing(entity: entity)
+                             }
+                         }
+                         .onDelete(perform: viewModel.deleteAddress)
+                     }
+                 } header: {
+                     Text("My addresses")
+                 }
 
             }
 //            .background(Color.brandPrimary.opacity(0.1))
@@ -166,28 +112,7 @@ struct AccountScreen: View {
                   message: alertItem.message,
                   dismissButton: alertItem.dismissButton)
         }
-    }
-    
-    private func loadAddressForEditing(entity: AddressEntity) {
-        selectedEntity = entity
-        houseNumber = entity.houseNumber ?? ""
-        address = entity.address ?? ""
-        sector = entity.sector ?? ""
-        pincode = entity.pincode ?? ""
-        city = entity.city ?? ""
-        state = entity.state ?? ""
-    }
-    
-    private func resetForm() {
-        houseNumber = ""
-        address = ""
-        sector = ""
-        pincode = ""
-        city = ""
-        state = ""
-        selectedEntity = nil
-    }
-    
+    }    
 }
 
 #Preview {

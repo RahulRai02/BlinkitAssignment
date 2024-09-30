@@ -22,6 +22,16 @@ final class AccountViewModel: ObservableObject{
     let container: NSPersistentContainer
     @Published var savedEntities: [AddressEntity] = []
     
+    // Address form data
+    @Published var houseNumber: String = ""
+    @Published var address: String = ""
+    @Published var sector: String = ""
+    @Published var pincode: String = ""
+    @Published var city: String = ""
+    @Published var state: String = ""
+    
+    @Published var selectedEntity: AddressEntity? = nil
+    
     init() {
         container = NSPersistentContainer(name: "AddressContainer")
         container.loadPersistentStores { description, error in
@@ -43,16 +53,43 @@ final class AccountViewModel: ObservableObject{
             print("Error fetching: \(error)")
         }
     }
-    func addAddress(houseNumber: String, address: String, sector: String, city: String, state: String, pincode: String){
-        let newAddress = AddressEntity(context: container.viewContext)
+//    func addAddress(houseNumber: String, address: String, sector: String, city: String, state: String, pincode: String){
+//        let newAddress = AddressEntity(context: container.viewContext)
+//        
+//        newAddress.houseNumber = houseNumber
+//        newAddress.address = address
+//        newAddress.sector = sector
+//        newAddress.city = city
+//        newAddress.state = state
+//        newAddress.pincode = pincode
+//        saveData()
+//    }
+    
+    func addOrUpdateAddress() {
+        guard !houseNumber.isEmpty, !address.isEmpty, !sector.isEmpty, !pincode.isEmpty, !city.isEmpty, !state.isEmpty else {
+            return
+        }
         
-        newAddress.houseNumber = houseNumber
-        newAddress.address = address
-        newAddress.sector = sector
-        newAddress.city = city
-        newAddress.state = state
-        newAddress.pincode = pincode
+        if let entity = selectedEntity {
+            // Editing existing address
+            entity.houseNumber = houseNumber
+            entity.address = address
+            entity.sector = sector
+            entity.pincode = pincode
+            entity.city = city
+            entity.state = state
+        } else {
+            // Adding a new address
+            let newAddress = AddressEntity(context: container.viewContext)
+            newAddress.houseNumber = houseNumber
+            newAddress.address = address
+            newAddress.sector = sector
+            newAddress.city = city
+            newAddress.state = state
+            newAddress.pincode = pincode
+        }
         saveData()
+        resetForm()
     }
     
     func deleteAddress(indexSet: IndexSet){
@@ -116,4 +153,24 @@ final class AccountViewModel: ObservableObject{
         return true
     }
     
+    
+    func loadAddressForEditing(entity: AddressEntity) {
+        selectedEntity = entity
+        houseNumber = entity.houseNumber ?? ""
+        address = entity.address ?? ""
+        sector = entity.sector ?? ""
+        pincode = entity.pincode ?? ""
+        city = entity.city ?? ""
+        state = entity.state ?? ""
+    }
+    
+    func resetForm() {
+        houseNumber = ""
+        address = ""
+        sector = ""
+        pincode = ""
+        city = ""
+        state = ""
+        selectedEntity = nil
+    }
 }

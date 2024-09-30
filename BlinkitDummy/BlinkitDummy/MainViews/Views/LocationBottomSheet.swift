@@ -17,6 +17,7 @@ struct LocationBottomSheet: View {
     @Binding var houseNumber: String
     @Environment(\.dismiss) var dismiss
     
+//    @ObservedObject var viewModel: AccountViewModel
 //    @Binding var firstNameforDelivery: String
 //    @Binding var lastNameforDelivery: String
 //    @Binding var emailforDelivery: String
@@ -136,6 +137,8 @@ struct LocationBottomSheet: View {
                             .cornerRadius(10)
 
 //                        }
+                        
+
                         Button(action: {
                             // Save address logic
                             print("Saving data")

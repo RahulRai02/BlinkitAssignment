@@ -16,7 +16,7 @@ struct MainNavigationBar: View {
     @State var addressTag: String = "Home"
     @State var houseNumber: String = ""
     
-    
+//    @ObservedObject var viewModel: AccountViewModel
 
     let showBackButton: Bool
     let title: String
