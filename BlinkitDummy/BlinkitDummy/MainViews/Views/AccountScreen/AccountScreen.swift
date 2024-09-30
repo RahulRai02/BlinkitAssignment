@@ -10,6 +10,11 @@ import SwiftUI
 struct AccountScreen: View {
     
     @StateObject var viewModel = AccountViewModel()
+//    @ObservedObject var locationManager: LocationManager
+    
+//    @Binding var addressTag: String
+//    @Binding var houseNumber: String
+    let gpsAddress: String
 
     var body: some View {
         NavigationView{
@@ -40,7 +45,23 @@ struct AccountScreen: View {
 //              Add/ update address
                 Section {
                     TextField("House Number", text: $viewModel.houseNumber)
-                    TextField("Address", text: $viewModel.address)
+                    HStack{
+                        TextField("Address", text: $viewModel.address)
+                            .onAppear {
+                                viewModel.loadAddress(gpsAddress: gpsAddress) // Set default value here
+                            }
+                        Button {
+                            LocationManager.shared.checkLocationAuthorization()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                viewModel.address = LocationManager.shared.userAddress
+                            }
+                            
+                        } label: {
+                            Image(systemName: "pin")
+                        }
+
+                    }
+
                     TextField("Sector", text: $viewModel.sector)
                     TextField("Pincode", text: $viewModel.pincode)
                     TextField("City", text: $viewModel.city)
@@ -66,17 +87,17 @@ struct AccountScreen: View {
                         }
 
      
-                Section{
-                    Toggle(isOn: $viewModel.user.extraNapkins) {
-                        Text("Extra Napkins")
-                    }
-                    Toggle(isOn: $viewModel.user.frequentRefills) {
-                        Text("Frequent Refills")
-                    }
-                } header: {
-                    Text("Requests")
-                }
-                .toggleStyle(SwitchToggleStyle(tint: .green))
+//                Section{
+//                    Toggle(isOn: $viewModel.user.extraNapkins) {
+//                        Text("Extra Napkins")
+//                    }
+//                    Toggle(isOn: $viewModel.user.frequentRefills) {
+//                        Text("Frequent Refills")
+//                    }
+//                } header: {
+//                    Text("Requests")
+//                }
+//                .toggleStyle(SwitchToggleStyle(tint: .green))
                
                 Section {
                      List {
@@ -95,6 +116,7 @@ struct AccountScreen: View {
                          }
                          .onDelete(perform: viewModel.deleteAddress)
                      }
+                     
                  } header: {
                      Text("My addresses")
                  }
@@ -114,10 +136,10 @@ struct AccountScreen: View {
         }
     }    
 }
-
-#Preview {
-    AccountScreen()
-}
+//
+//#Preview {
+//    AccountScreen()
+//}
 
 struct AddressCell: View {
     let houseNumber: String
@@ -165,3 +187,20 @@ struct AddressCell: View {
     }
 }
 
+
+struct AddressPreferenceKey: PreferenceKey {
+    static var defaultValue: [AddressEntity] = []
+    
+    static func reduce(value: inout [AddressEntity], nextValue: () -> [AddressEntity]) {
+        value.append(contentsOf: nextValue())
+    }
+}
+
+
+//struct AddressPreferenceKey: PreferenceKey {
+//    static var defaultValue: [AddressEntity] = []  // Use your Core Data entity type or struct here
+//    
+//    static func reduce(value: inout [AddressEntity], nextValue: () -> [AddressEntity]) {
+//        value.append(contentsOf: nextValue())
+//    }
+//}

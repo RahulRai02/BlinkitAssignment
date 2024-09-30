@@ -22,6 +22,7 @@ struct MainNavigationBar: View {
     let title: String
     let Minutes: String
     let isSurgeApplicable: Bool
+//    @ObservedObject var viewModel: AccountViewModel
 //    @State var showLocationSheet: Bool = false;
 //    let showBackButton: Bool
 //    let title: String
@@ -31,6 +32,7 @@ struct MainNavigationBar: View {
 //    let isSurgeApplicable: Bool
 //    let showLocationSheet: Bool
     
+    @State var addresses: [AddressEntity] = []
     
     var body: some View {
             HStack{
@@ -65,7 +67,7 @@ struct MainNavigationBar: View {
                 Spacer()
                 
                 NavigationLink{
-                    AccountScreen()
+                    AccountScreen(gpsAddress: "")
                 }label:{
                     Image(systemName: "person.circle")
                         .resizable()
@@ -84,14 +86,19 @@ struct MainNavigationBar: View {
                     endPoint: .bottomTrailing
                 )
             )
+//            .onPreferenceChange(AddressPreferenceKey.self, perform: { newAddress in
+//                self.addresses = newAddress
+//            })
             .sheet(isPresented: $showLocationSheet, content: {
-                LocationBottomSheet(address: $address, addressTag: $addressTag, houseNumber: $houseNumber)
-                    .presentationBackground(.thinMaterial)
-//                    .presentationBackground(alignment: .bottom) {
-//                            LinearGradient(colors: [Color.pink, Color.purple], startPoint: .bottomLeading, endPoint: .topTrailing)
-//                    }
-                    .presentationDetents([.fraction(0.9)])
-                    .presentationDragIndicator(.visible)
+                NavigationView {
+                    LocationBottomSheet(address: $address, addressTag: $addressTag, houseNumber: $houseNumber)
+                        .presentationBackground(.thinMaterial)
+    //                    .presentationBackground(alignment: .bottom) {
+    //                            LinearGradient(colors: [Color.pink, Color.purple], startPoint: .bottomLeading, endPoint: .topTrailing)
+    //                    }
+                        .presentationDetents([.fraction(0.9)])
+                        .presentationDragIndicator(.visible)
+                }
             })
 
     }

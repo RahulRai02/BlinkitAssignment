@@ -17,13 +17,7 @@ struct LocationBottomSheet: View {
     @Binding var houseNumber: String
     @Environment(\.dismiss) var dismiss
     
-//    @ObservedObject var viewModel: AccountViewModel
-//    @Binding var firstNameforDelivery: String
-//    @Binding var lastNameforDelivery: String
-//    @Binding var emailforDelivery: String
     
-    
-    @State private var isLocationEnabled: Bool = false
 
     var body: some View {
         ScrollView{
@@ -31,26 +25,26 @@ struct LocationBottomSheet: View {
                 // Status Header
                 GroupBox {
                     HStack{
-                        Text(isLocationEnabled ? "Location is enabled now! 😊" : "Location is not enabled. Enable for current location.")
+                        Text(locationManager.isLocationEnabled ? "Location is enabled now! 😊" : "Location is not enabled. Enable for current location.")
                             .font(.headline)
-                            .foregroundColor(isLocationEnabled ? .brandPrimary : .red)
-                            .animation(.easeInOut, value: isLocationEnabled)
+                            .foregroundColor(locationManager.isLocationEnabled ? .brandPrimary : .red)
+                            .animation(.easeInOut, value: locationManager.isLocationEnabled)
                         Spacer()
                         Button(action: {
-                            if !isLocationEnabled {
+                            if !locationManager.isLocationEnabled {
                                 locationManager.checkLocationAuthorization()
                                 
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { // Adjust delay as needed
                                     self.address = locationManager.userAddress // Autofill the address
-                                    self.isLocationEnabled = true // Update the location status
+                                    self.locationManager.isLocationEnabled = true // Update the location status
                                 }
                             }
                         }) {
-                            Text(isLocationEnabled ? "Enabled" : "Enable")
+                            Text(locationManager.isLocationEnabled ? "Enabled" : "Enable")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding(8)
-                                .background(isLocationEnabled ? Color.brandPrimary : Color.blue)
+                                .background(locationManager.isLocationEnabled ? Color.brandPrimary : Color.blue)
                                 .cornerRadius(8)
                         }
                     }
@@ -71,82 +65,33 @@ struct LocationBottomSheet: View {
                             .font(.system(size: 13).weight(.medium))
                             .lineLimit(2)
                             .frame(alignment: .center)
-                        Button(action: {
-                            // Handle dismiss sheet logic
-                            dismiss()
-
-                        }) {
-                            Text("Use this Location")
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.brandPrimary)
-//                                .gradientBackground()
-                                .cornerRadius(10)
-                        }
-                        .padding(.horizontal)
-                    }
-                }label: {
-                    Label("Current Location", systemImage: isLocationEnabled ? "pin" : "pin.slash")
-                        .animation(.easeInOut, value: isLocationEnabled)
-                }
-                GroupBox{
-                    VStack(alignment: .leading, spacing: 10) {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("House Number")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            TextField("Enter your house number", text: $houseNumber)
-                                .padding()
-                                .background(Color.lightGrey)
-                            //                            .gradientBackground()
-                                .cornerRadius(10)
-                                .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 5)
-                        }
-                        
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text("Address")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                            TextField("Your address will appear here", text: $address)
-                                .disabled(true)
-                                .padding()
-                            //                            .background(Color.white)
-                                .background(Color.lightGrey)
-                            //                            .gradientBackground()
-                                .cornerRadius(10)
-                                .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 5)
-                        }
                         
                         
-//                        VStack(alignment: .leading, spacing: 5) {
-//                            Text("Address Tag")
-//                                .font(.headline)
-//                                .foregroundColor(.secondary)
-                            Picker("Address Tag", selection: $addressTag) {
-                                Text("HOME").tag("Home")
-                                Text("OFFICE").tag("Office")
-                                Text("OTHERS").tag("Others")
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                            //                        .padding()
-                            //                        .background(Color.white)
+                        TextField("Enter your house number", text: $houseNumber)
+                            .padding(.vertical, 8) // Adjust vertical padding as needed
+                            .padding(.horizontal, 12) // Horizontal padding
                             .background(Color.lightGrey)
-//                            .gradientBackground()
                             .cornerRadius(10)
-
-//                        }
+                            .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 5)
+                            .frame(height: 40)
                         
-
+                        Picker("Address Tag", selection: $addressTag) {
+                            Text("HOME").tag("Home")
+                            Text("OFFICE").tag("Office")
+                            Text("OTHERS").tag("Others")
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .background(Color.lightGrey)
+                        .cornerRadius(10)
+                        
                         Button(action: {
-                            // Save address logic
-                            print("Saving data")
+                            dismiss()
                         }) {
-                            Text("Save address")
+                            Text("Use this Location to browse app")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding()
+                                .frame(height: 40)
                                 .frame(maxWidth: .infinity)
                                 .background(Color.brandPrimary)
 //                                .gradientBackground()
@@ -156,12 +101,34 @@ struct LocationBottomSheet: View {
                         
                     }
                 }label: {
-                    Label("My Address", systemImage: "house")
+                    Label("Current Location", systemImage: locationManager.isLocationEnabled ? "pin" : "pin.slash")
+                        .animation(.easeInOut, value: locationManager.isLocationEnabled)
                 }
+                
+                NavigationLink {
+                    AccountScreen(gpsAddress: address)
+                } label: {
+                    HStack{
+                        Text("Add or View saved addresses...")
+                        Spacer()
+                        Image(systemName: "arrowtriangle.forward.fill")
+                    }
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.black)
+                    .padding()
+                    .frame(height: 40)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.lightGrey)
+//                                .gradientBackground()
+                    .cornerRadius(10)
+                    
+                }
+
                 
             }
             .padding()
         }
+
 
     }
         

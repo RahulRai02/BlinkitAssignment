@@ -173,4 +173,8 @@ final class AccountViewModel: ObservableObject{
         state = ""
         selectedEntity = nil
     }
+    func loadAddress(gpsAddress: String){
+        self.address = gpsAddress
+    }
+    
 }

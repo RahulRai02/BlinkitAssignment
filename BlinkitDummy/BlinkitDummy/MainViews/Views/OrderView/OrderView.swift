@@ -4,6 +4,9 @@
 //
 //  Created by Rahul Rai on 22/09/24.
 //
+
+// https://medium.com/@venkateshmandapati/displaying-gifs-in-swiftui-using-gifimageview-04179d926552
+
 import SwiftUI
 
 struct OrderView: View {
@@ -13,28 +16,43 @@ struct OrderView: View {
             VStack{
                 GroupBox {
                     ScrollView{
-                        if order.items.isEmpty {
-                            // Display an image when the cart is empty
-                            VStack(alignment:.center){
-                                Image(systemName: "cart")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(.gray)
-                                Text("Your cart is empty")
-                                    .font(.title3)
-                                    .foregroundColor(.gray)
-                            }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                        if order.items.isEmpty {
+//                            // Display an image when the cart is empty
+//                            VStack(alignment:.center){
+//                              
+//                                Image(systemName: "cart")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(width: 100, height: 100)
+//                                    .foregroundColor(.gray)
+//                                Text("Your cart is empty")
+//                                    .font(.title3)
+//                                    .foregroundColor(.gray)
+//                            }
+//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                             
-                        } else {
+//                        } else {
                             // Display the cart items when there are items in the cart
                             VStack {
                                 ForEach(order.items) { product in
                                     orderItemCell(product: product)
                                 }
                             }
+//                        }
+                    }
+                    if order.items.isEmpty {
+                        // Display an image when the cart is empty
+                        VStack(alignment:.center){
+                            Image(systemName: "cart")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100, height: 100)
+                                .foregroundColor(.brandPrimary)
+                            Text("Your cart is empty")
+                                .font(.title3)
+                                .foregroundColor(.brandPrimary)
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 } label: {
                     Label("Delivery in 12 mins", systemImage: "clock")

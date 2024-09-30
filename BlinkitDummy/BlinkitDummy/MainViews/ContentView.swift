@@ -29,7 +29,7 @@ struct ContentView: View {
                 .tabBarItem(tab: .cart,
                             selection: $tabSelection)
             
-            AccountScreen()
+            AccountScreen(gpsAddress: "")
                 .tabBarItem(tab: .profile,
                             selection: $tabSelection)
         }
