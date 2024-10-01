@@ -1,4 +1,4 @@
-# Blinkit Assignment
+# Blinkit Clone using Swift & SwiftUI
 
 This repository is part of a take home assignment given by Blinkit. The following layout and features were implemented for submission. After that i took this as a personal project and added various functionalties to the app thereby learning new libraries like MapKit, CoreData, AppStorage, CoreLocation.. Learnt how to manage states in a big app.. This is an ongoing app and i would include many features in future increasing my learning in SwiftUI and Swift. Checkout the app videos and App screenshots below...
 
